@@ -1,0 +1,1078 @@
+{
+  "meta": {
+    "currency": "EUR",
+    "deliveryFee": 3.0,
+    "deliveryZones": [
+      {
+        "id": "city",
+        "label": "Stadtgebiet",
+        "fee": 3.0
+      },
+      {
+        "id": "5km",
+        "label": "Bis 5 Kilometer",
+        "fee": 7.0
+      },
+      {
+        "id": "far",
+        "label": "Weiter draußen",
+        "fee": null,
+        "note": "Preis individuell"
+      }
+    ],
+    "minOrder": 9.0,
+    "hours": "So–Do 20–02 · Fr–Sa 20–04",
+    "phone": "+491706179083",
+    "phoneDisplay": "0170 6179083"
+  },
+  "categories": [
+    {
+      "id": "all",
+      "label": "Alle"
+    },
+    {
+      "id": "deals",
+      "label": "Pakete"
+    },
+    {
+      "id": "alkoholfrei",
+      "label": "Alkoholfrei"
+    },
+    {
+      "id": "bier",
+      "label": "Bier"
+    },
+    {
+      "id": "mischbier",
+      "label": "Mischbier"
+    },
+    {
+      "id": "wein",
+      "label": "Wein"
+    },
+    {
+      "id": "sekt",
+      "label": "Sekt"
+    },
+    {
+      "id": "likoer",
+      "label": "Liköre"
+    },
+    {
+      "id": "vodka",
+      "label": "Vodka"
+    },
+    {
+      "id": "rum",
+      "label": "Rum"
+    },
+    {
+      "id": "whiskey",
+      "label": "Whiskey"
+    },
+    {
+      "id": "gin",
+      "label": "Gin"
+    },
+    {
+      "id": "kraeuter",
+      "label": "Kräuter"
+    },
+    {
+      "id": "klarer",
+      "label": "Klarer/Korn"
+    },
+    {
+      "id": "brand",
+      "label": "Goldbrand"
+    },
+    {
+      "id": "tequila",
+      "label": "Tequila"
+    },
+    {
+      "id": "dosen",
+      "label": "Flachmänner"
+    },
+    {
+      "id": "snacks",
+      "label": "Snacks"
+    }
+  ],
+  "products": [
+    {
+      "id": "zwanie",
+      "name": "Der letzte Zwanie",
+      "thumb": "20",
+      "isDeal": true,
+      "bestseller": true,
+      "desc": "5× Sternburg Export · 1× Klarer · 1× Funnyfrisch Chips Ungarisch",
+      "price": 17.0,
+      "cat": "deals",
+      "ageLimit": 18
+    },
+    {
+      "id": "wm",
+      "name": "Die Weg Mische",
+      "thumb": "WM",
+      "isDeal": true,
+      "bestseller": true,
+      "desc": "1× Fjorowka Vodka · 2× Softdrinks nach Wahl",
+      "price": 16.5,
+      "cat": "deals",
+      "ageLimit": 18
+    },
+    {
+      "id": "maedels-sekt",
+      "name": "Die Mädels kommen – Sekt",
+      "thumb": "MS",
+      "isDeal": true,
+      "bestseller": false,
+      "desc": "2× Rotkäppchen · 4× Lübzer Grapefruit/Zitrone",
+      "price": 21.0,
+      "cat": "deals",
+      "ageLimit": 16
+    },
+    {
+      "id": "maedels-wein",
+      "name": "Die Mädels kommen – Wein",
+      "thumb": "MW",
+      "isDeal": true,
+      "bestseller": false,
+      "desc": "2× Weiß- oder Rotwein · 4× Lübzer Grapefruit/Zitrone",
+      "price": 19.0,
+      "cat": "deals",
+      "ageLimit": 16
+    },
+    {
+      "id": "letsgo",
+      "name": "Okaaaay, Let’s Gooo!!!",
+      "thumb": "GO",
+      "isDeal": true,
+      "bestseller": false,
+      "desc": "1× Kiste Heineken/Becks/Carlsberg/Budweiser · 2× Gorbatschow · 4× Softdrink",
+      "price": 78.0,
+      "cat": "deals",
+      "ageLimit": 18
+    },
+    {
+      "id": "knallt",
+      "name": "Schmeckt und Knallt",
+      "thumb": "SK",
+      "isDeal": true,
+      "bestseller": false,
+      "desc": "1× Goldkrone · 1× Eistee",
+      "price": 15.8,
+      "cat": "deals",
+      "ageLimit": 18
+    },
+    {
+      "id": "opa",
+      "name": "Opas Mische",
+      "thumb": "OP",
+      "isDeal": true,
+      "bestseller": false,
+      "desc": "1× Klarer · 2× Softdrink nach Wahl",
+      "price": 14.5,
+      "cat": "deals",
+      "ageLimit": 18
+    },
+    {
+      "id": "garry",
+      "name": "Dein Kumpel Garry",
+      "thumb": "DG",
+      "isDeal": true,
+      "bestseller": false,
+      "desc": "6× Bier nach Wahl · 1× Absolut · 2× Softdrink",
+      "price": 30.0,
+      "cat": "deals",
+      "ageLimit": 18
+    },
+    {
+      "id": "wasser",
+      "name": "Wasser Still/Medium/Classic 0,7 l",
+      "thumb": "W",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 2.2,
+      "cat": "alkoholfrei",
+      "ageLimit": null
+    },
+    {
+      "id": "cola",
+      "name": "Coca-Cola 1,0 l",
+      "thumb": "CO",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 2.7,
+      "cat": "alkoholfrei",
+      "ageLimit": null
+    },
+    {
+      "id": "fanta",
+      "name": "Fanta 1,0 l",
+      "thumb": "FA",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 2.7,
+      "cat": "alkoholfrei",
+      "ageLimit": null
+    },
+    {
+      "id": "sprite",
+      "name": "Sprite 1,0 l",
+      "thumb": "SP",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 2.7,
+      "cat": "alkoholfrei",
+      "ageLimit": null
+    },
+    {
+      "id": "mezzo",
+      "name": "Mezzo Mix 1,0 l",
+      "thumb": "MM",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 2.7,
+      "cat": "alkoholfrei",
+      "ageLimit": null
+    },
+    {
+      "id": "monster",
+      "name": "Monster Energy",
+      "thumb": "MO",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "Verschiedene Sorten",
+      "price": 2.5,
+      "cat": "alkoholfrei",
+      "ageLimit": null
+    },
+    {
+      "id": "redbull",
+      "name": "Red Bull Energy 0,33 l",
+      "thumb": "RB",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "Verschiedene Sorten",
+      "price": 2.5,
+      "cat": "alkoholfrei",
+      "ageLimit": null
+    },
+    {
+      "id": "pepsi",
+      "name": "Pepsi Cola 1,25 l",
+      "thumb": "PE",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 3.0,
+      "cat": "alkoholfrei",
+      "ageLimit": null
+    },
+    {
+      "id": "miomate",
+      "name": "Mio Mate 0,5 l",
+      "thumb": "MI",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 2.0,
+      "cat": "alkoholfrei",
+      "ageLimit": null
+    },
+    {
+      "id": "glashaeger",
+      "name": "Glashäger Sommermix 1 l",
+      "thumb": "GH",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 2.3,
+      "cat": "alkoholfrei",
+      "ageLimit": null
+    },
+    {
+      "id": "saft",
+      "name": "Saft (Orange, Banane, Kirsche)",
+      "thumb": "SA",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 3.5,
+      "cat": "alkoholfrei",
+      "ageLimit": null
+    },
+    {
+      "id": "tonic",
+      "name": "Tonic Water",
+      "thumb": "TO",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 3.0,
+      "cat": "alkoholfrei",
+      "ageLimit": null
+    },
+    {
+      "id": "pfanner",
+      "name": "Pfanner Eistee 2 l",
+      "thumb": "PF",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "Verschiedene Sorten",
+      "price": 3.5,
+      "cat": "alkoholfrei",
+      "ageLimit": null
+    },
+    {
+      "id": "sternburg",
+      "name": "Sternburg Export",
+      "thumb": "ST",
+      "isDeal": false,
+      "bestseller": true,
+      "desc": "",
+      "price": 1.2,
+      "cat": "bier",
+      "ageLimit": 16
+    },
+    {
+      "id": "luebzer",
+      "name": "Lübzer Pils",
+      "thumb": "LÜ",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 1.5,
+      "cat": "bier",
+      "ageLimit": 16
+    },
+    {
+      "id": "hasseroeder",
+      "name": "Hasseröder Pils",
+      "thumb": "HA",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 1.5,
+      "cat": "bier",
+      "ageLimit": 16
+    },
+    {
+      "id": "radeberger",
+      "name": "Radeberger",
+      "thumb": "RA",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 1.5,
+      "cat": "bier",
+      "ageLimit": 16
+    },
+    {
+      "id": "krombacher",
+      "name": "Krombacher",
+      "thumb": "KR",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 1.5,
+      "cat": "bier",
+      "ageLimit": 16
+    },
+    {
+      "id": "becks",
+      "name": "Beck's",
+      "thumb": "B",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 2.0,
+      "cat": "bier",
+      "ageLimit": 16
+    },
+    {
+      "id": "carlsberg",
+      "name": "Carlsberg",
+      "thumb": "CA",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 2.0,
+      "cat": "bier",
+      "ageLimit": 16
+    },
+    {
+      "id": "heineken",
+      "name": "Heineken 0,4 l",
+      "thumb": "HE",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 2.0,
+      "cat": "bier",
+      "ageLimit": 16
+    },
+    {
+      "id": "budweiser",
+      "name": "Budweiser",
+      "thumb": "BU",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 2.0,
+      "cat": "bier",
+      "ageLimit": 16
+    },
+    {
+      "id": "tyskie",
+      "name": "Tyskie",
+      "thumb": "TY",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 2.0,
+      "cat": "bier",
+      "ageLimit": 16
+    },
+    {
+      "id": "weissbier",
+      "name": "Weißbier",
+      "thumb": "WB",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 2.3,
+      "cat": "bier",
+      "ageLimit": 16
+    },
+    {
+      "id": "mixery",
+      "name": "Mixery Energy",
+      "thumb": "MX",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 2.0,
+      "cat": "mischbier",
+      "ageLimit": 16
+    },
+    {
+      "id": "vplus",
+      "name": "V+ Energy/Curuba",
+      "thumb": "V+",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 1.8,
+      "cat": "mischbier",
+      "ageLimit": 16
+    },
+    {
+      "id": "becksice",
+      "name": "Becks Ice",
+      "thumb": "BI",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 1.8,
+      "cat": "mischbier",
+      "ageLimit": 16
+    },
+    {
+      "id": "astra",
+      "name": "Astra Rakete/Kiezmische",
+      "thumb": "AS",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 1.5,
+      "cat": "mischbier",
+      "ageLimit": 16
+    },
+    {
+      "id": "luebzergf",
+      "name": "Lübzer Grapefruit/Zitrone",
+      "thumb": "LG",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 1.5,
+      "cat": "mischbier",
+      "ageLimit": 16
+    },
+    {
+      "id": "desperados",
+      "name": "Desperados",
+      "thumb": "DE",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 2.7,
+      "cat": "mischbier",
+      "ageLimit": 16
+    },
+    {
+      "id": "dornfelder",
+      "name": "Dornfelder Rotwein",
+      "thumb": "DO",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "lieblich / halbtrocken / trocken",
+      "price": 8.0,
+      "cat": "wein",
+      "ageLimit": 16
+    },
+    {
+      "id": "pinot",
+      "name": "Pinot Weiß trocken",
+      "thumb": "PW",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 8.0,
+      "cat": "wein",
+      "ageLimit": 16
+    },
+    {
+      "id": "burgunder",
+      "name": "Weißer Burgunder halbtrocken",
+      "thumb": "WBu",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 8.0,
+      "cat": "wein",
+      "ageLimit": 16
+    },
+    {
+      "id": "liebfrauen",
+      "name": "Liebfrauenmilch Weiß lieblich",
+      "thumb": "LM",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 7.0,
+      "cat": "wein",
+      "ageLimit": 16
+    },
+    {
+      "id": "gluehwein",
+      "name": "Glühwein",
+      "thumb": "GL",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 8.0,
+      "cat": "wein",
+      "ageLimit": 16
+    },
+    {
+      "id": "rotk",
+      "name": "Rotkäppchen",
+      "thumb": "RK",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "halbtrocken / trocken / rosé",
+      "price": 9.0,
+      "cat": "sekt",
+      "ageLimit": 16
+    },
+    {
+      "id": "jive",
+      "name": "Jive Erdbeer Fruchtsekt",
+      "thumb": "JI",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 9.0,
+      "cat": "sekt",
+      "ageLimit": 16
+    },
+    {
+      "id": "saurekirsche",
+      "name": "Saure Kirsche",
+      "thumb": "SKi",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 10.5,
+      "cat": "likoer",
+      "ageLimit": 18
+    },
+    {
+      "id": "saurepflaume",
+      "name": "Saure Pflaume",
+      "thumb": "SPf",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 10.5,
+      "cat": "likoer",
+      "ageLimit": 18
+    },
+    {
+      "id": "pfeffi",
+      "name": "Pfeffi",
+      "thumb": "PF",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 10.5,
+      "cat": "likoer",
+      "ageLimit": 18
+    },
+    {
+      "id": "berlinerluft",
+      "name": "Berliner Luft",
+      "thumb": "BL",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 14.0,
+      "cat": "likoer",
+      "ageLimit": 18
+    },
+    {
+      "id": "feigling",
+      "name": "Feigling",
+      "thumb": "FE",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 15.0,
+      "cat": "likoer",
+      "ageLimit": 18
+    },
+    {
+      "id": "kuestennebel",
+      "name": "Küstennebel",
+      "thumb": "KN",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 15.0,
+      "cat": "likoer",
+      "ageLimit": 18
+    },
+    {
+      "id": "eierlikoer",
+      "name": "Eierlikör",
+      "thumb": "EL",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 13.0,
+      "cat": "likoer",
+      "ageLimit": 18
+    },
+    {
+      "id": "malibu",
+      "name": "Malibu Strawberry",
+      "thumb": "MA",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 17.0,
+      "cat": "likoer",
+      "ageLimit": 18
+    },
+    {
+      "id": "fjorowka",
+      "name": "Fjorowka",
+      "thumb": "FJ",
+      "isDeal": false,
+      "bestseller": true,
+      "desc": "",
+      "price": 13.5,
+      "cat": "vodka",
+      "ageLimit": 18
+    },
+    {
+      "id": "gorbatschow",
+      "name": "Gorbatschow",
+      "thumb": "GO",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 16.0,
+      "cat": "vodka",
+      "ageLimit": 18
+    },
+    {
+      "id": "smirnoff",
+      "name": "Smirnoff",
+      "thumb": "SM",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 22.5,
+      "cat": "vodka",
+      "ageLimit": 18
+    },
+    {
+      "id": "threesixty",
+      "name": "Three Sixty",
+      "thumb": "360",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 23.5,
+      "cat": "vodka",
+      "ageLimit": 18,
+      "oldPrice": 25.0
+    },
+    {
+      "id": "absolut",
+      "name": "Absolut",
+      "thumb": "A",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 28.0,
+      "cat": "vodka",
+      "ageLimit": 18
+    },
+    {
+      "id": "bacardi",
+      "name": "Bacardi White/Spiced",
+      "thumb": "BA",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 25.0,
+      "cat": "rum",
+      "ageLimit": 18,
+      "oldPrice": 26.0
+    },
+    {
+      "id": "havanna",
+      "name": "Havanna Club",
+      "thumb": "HC",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 25.0,
+      "cat": "rum",
+      "ageLimit": 18,
+      "oldPrice": 26.0
+    },
+    {
+      "id": "captain",
+      "name": "Captain Morgan",
+      "thumb": "CM",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 23.5,
+      "cat": "rum",
+      "ageLimit": 18
+    },
+    {
+      "id": "jimbeam",
+      "name": "Jim Beam",
+      "thumb": "JB",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 28.0,
+      "cat": "whiskey",
+      "ageLimit": 18,
+      "oldPrice": 30.0
+    },
+    {
+      "id": "jackdaniels",
+      "name": "Jack Daniel’s",
+      "thumb": "JD",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 28.0,
+      "cat": "whiskey",
+      "ageLimit": 18,
+      "oldPrice": 30.0
+    },
+    {
+      "id": "johnnywalker",
+      "name": "Johnny Walker Red Label",
+      "thumb": "JW",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 28.0,
+      "cat": "whiskey",
+      "ageLimit": 18,
+      "oldPrice": 30.0
+    },
+    {
+      "id": "lionheart",
+      "name": "Lion Heart",
+      "thumb": "LH",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 14.5,
+      "cat": "gin",
+      "ageLimit": 18
+    },
+    {
+      "id": "gordons",
+      "name": "Gin Gordons",
+      "thumb": "GG",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 22.0,
+      "cat": "gin",
+      "ageLimit": 18
+    },
+    {
+      "id": "bombay",
+      "name": "Gin Bombay",
+      "thumb": "BB",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 27.0,
+      "cat": "gin",
+      "ageLimit": 18
+    },
+    {
+      "id": "gebirgskraeuter",
+      "name": "Gebirgskräuter",
+      "thumb": "GK",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 10.5,
+      "cat": "kraeuter",
+      "ageLimit": 18
+    },
+    {
+      "id": "flaeminger",
+      "name": "Fläminger Jagd",
+      "thumb": "FL",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 13.5,
+      "cat": "kraeuter",
+      "ageLimit": 18
+    },
+    {
+      "id": "jaegermeister",
+      "name": "Jägermeister",
+      "thumb": "JÄ",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 25.0,
+      "cat": "kraeuter",
+      "ageLimit": 18
+    },
+    {
+      "id": "landhaus",
+      "name": "Landhaus Klarer",
+      "thumb": "LK",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 10.5,
+      "cat": "klarer",
+      "ageLimit": 18
+    },
+    {
+      "id": "weizenkorn",
+      "name": "Oldesloer Weizenkorn",
+      "thumb": "WK",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 14.0,
+      "cat": "klarer",
+      "ageLimit": 18
+    },
+    {
+      "id": "doppelkorn",
+      "name": "Oldesloer Doppelkorn",
+      "thumb": "DK",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 17.0,
+      "cat": "klarer",
+      "ageLimit": 18
+    },
+    {
+      "id": "halberklarer",
+      "name": "„Halber Klarer“ 0,35 l",
+      "thumb": "½",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 7.0,
+      "cat": "klarer",
+      "ageLimit": 18
+    },
+    {
+      "id": "goldkrone",
+      "name": "Wilthener Goldkrone",
+      "thumb": "WG",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 13.5,
+      "cat": "brand",
+      "ageLimit": 18
+    },
+    {
+      "id": "sierra",
+      "name": "Sierra Tequila Gold/Silber",
+      "thumb": "SI",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 24.0,
+      "cat": "tequila",
+      "ageLimit": 18
+    },
+    {
+      "id": "captaincola",
+      "name": "Captain Morgan Cola",
+      "thumb": "CC",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 6.0,
+      "cat": "dosen",
+      "ageLimit": 18
+    },
+    {
+      "id": "jackcola",
+      "name": "Jack Daniel’s Cola",
+      "thumb": "JC",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 6.0,
+      "cat": "dosen",
+      "ageLimit": 18
+    },
+    {
+      "id": "pfeffi01",
+      "name": "Pfeffi 0,1 l",
+      "thumb": "P1",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 3.0,
+      "cat": "dosen",
+      "ageLimit": 18
+    },
+    {
+      "id": "jaeger01",
+      "name": "Jägermeister 0,1 l",
+      "thumb": "J1",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 5.5,
+      "cat": "dosen",
+      "ageLimit": 18
+    },
+    {
+      "id": "fjorowka01",
+      "name": "Fjorowka 0,1 l",
+      "thumb": "F1",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 3.5,
+      "cat": "dosen",
+      "ageLimit": 18
+    },
+    {
+      "id": "smirnoffice",
+      "name": "Smirnoff ICE",
+      "thumb": "SC",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 5.5,
+      "cat": "dosen",
+      "ageLimit": 18
+    },
+    {
+      "id": "chips",
+      "name": "FunnyFrisch Chips Ungarisch",
+      "thumb": "FF",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 3.0,
+      "cat": "snacks",
+      "ageLimit": null
+    },
+    {
+      "id": "flips",
+      "name": "Lorenz Erdnuss Flips",
+      "thumb": "LF",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 3.7,
+      "cat": "snacks",
+      "ageLimit": null
+    },
+    {
+      "id": "salzstangen",
+      "name": "Lorenz Salzstangen",
+      "thumb": "LS",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 3.5,
+      "cat": "snacks",
+      "ageLimit": null
+    },
+    {
+      "id": "goldbaeren",
+      "name": "Haribo Goldbären",
+      "thumb": "HG",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "",
+      "price": 3.5,
+      "cat": "snacks",
+      "ageLimit": null
+    },
+    {
+      "id": "ballastixx",
+      "name": "Haribo Ballastixx",
+      "thumb": "HB",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "Verschiedene Sorten",
+      "price": 3.5,
+      "cat": "snacks",
+      "ageLimit": null
+    },
+    {
+      "id": "erasco",
+      "name": "Erasco Suppen / Eintöpfe",
+      "thumb": "ER",
+      "isDeal": false,
+      "bestseller": false,
+      "desc": "Verschiedene Sorten",
+      "price": 6.0,
+      "cat": "snacks",
+      "ageLimit": null
+    }
+  ]
+}

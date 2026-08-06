@@ -1,0 +1,31 @@
+{
+  "color": {
+    "bg": "#0a0b0f",
+    "bg2": "#0f1117",
+    "panel": "#14161e",
+    "panel2": "#191c26",
+    "line": "rgba(255,255,255,.09)",
+    "line2": "rgba(255,255,255,.16)",
+    "ink": "#f4f5f8",
+    "inkDim": "#a4a8b6",
+    "inkFaint": "#6c7180",
+    "amber": "#ffb020",
+    "amber2": "#ff8a00",
+    "lime": "#c8ff2e",
+    "ice": "#5ad1ff",
+    "rose": "#ff4d6d",
+    "violet": "#8b6cff",
+    "gradient": "linear-gradient(120deg,#ffb020,#ff6a3d 55%,#ff4d6d)"
+  },
+  "radius": { "base": "18px", "lg": "26px", "pill": "999px" },
+  "shadow": "0 30px 80px -30px rgba(0,0,0,.8)",
+  "font": {
+    "display": "\"Bahnschrift\",\"DIN Alternate\",\"Segoe UI\",system-ui,sans-serif",
+    "body": "ui-sans-serif,system-ui,-apple-system,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif",
+    "note": "Display face is a condensed grotesque (Bahnschrift/DIN feel). For the Next.js build swap to a web font: 'Bahnschrift' local fallback -> use next/font with e.g. Oswald or Anton for display, Inter for body."
+  },
+  "layout": {
+    "maxWidth": "1280px",
+    "sectionPadX": "clamp(16px,4vw,44px)"
+  }
+}

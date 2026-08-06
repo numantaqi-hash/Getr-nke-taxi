@@ -1,0 +1,302 @@
+/* Minimales Grund-Styling nur für die Backend-/Status-Seite der App.
+   Das eigentliche Shop-Design (index.html) bleibt davon unberührt. */
+:root {
+  --bg: #0a0b0f;
+  --panel: #14161e;
+  --line: rgba(255, 255, 255, 0.1);
+  --ink: #f4f5f8;
+  --ink-dim: #b9bdca;
+  --gold: #f6c453;
+  --grad: linear-gradient(120deg, #f6c453, #ff8a00 55%, #ff6a3d);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  line-height: 1.55;
+}
+
+a {
+  color: var(--gold);
+}
+
+/* ===== Gemeinsame UI-Bausteine für Kunden-/Fahrer-Screens ===== */
+.page {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 22px 18px 60px;
+  min-height: 100vh;
+}
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.topbar .mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  background: var(--grad);
+  color: #161007;
+  font-weight: 800;
+  font-family: "Bahnschrift", "Segoe UI", system-ui, sans-serif;
+}
+.topbar b {
+  font-family: "Bahnschrift", "Segoe UI", system-ui, sans-serif;
+  font-size: 17px;
+}
+.topbar b span {
+  color: var(--gold);
+}
+.topbar .spacer {
+  flex: 1;
+}
+h1.title {
+  font-family: "Bahnschrift", "Segoe UI", system-ui, sans-serif;
+  font-size: 26px;
+  margin: 4px 0 4px;
+}
+.sub {
+  color: var(--ink-dim);
+  font-size: 14px;
+  margin: 0 0 18px;
+}
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 14px;
+}
+.tabs {
+  display: flex;
+  gap: 8px;
+  background: #191c26;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 16px;
+}
+.tabs button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--ink-dim);
+  font-weight: 700;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+.tabs button.active {
+  background: var(--grad);
+  color: #161007;
+}
+.field {
+  margin-bottom: 12px;
+}
+.field label {
+  display: block;
+  font-size: 13px;
+  color: var(--ink-dim);
+  margin-bottom: 5px;
+}
+.field input,
+.field select {
+  width: 100%;
+  padding: 13px 14px;
+  border-radius: 12px;
+  background: #0f1117;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 16px;
+  outline: none;
+}
+.field input:focus,
+.field select:focus {
+  border-color: var(--gold);
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 50px;
+  padding: 0 18px;
+  border-radius: 13px;
+  font-weight: 800;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  color: var(--ink);
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: var(--grad);
+  color: #161007;
+}
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line-2, rgba(255, 255, 255, 0.18));
+}
+.btn-danger {
+  background: rgba(255, 77, 109, 0.14);
+  border: 1px solid rgba(255, 77, 109, 0.4);
+  color: #ff6d84;
+}
+.btn-sm {
+  width: auto;
+  min-height: 40px;
+  padding: 0 14px;
+  font-size: 13px;
+  border-radius: 10px;
+}
+.alert {
+  padding: 11px 14px;
+  border-radius: 11px;
+  font-size: 13.5px;
+  margin-bottom: 14px;
+}
+.alert.error {
+  background: rgba(255, 77, 109, 0.12);
+  border: 1px solid rgba(255, 77, 109, 0.35);
+  color: #ff8098;
+}
+.alert.ok {
+  background: rgba(80, 220, 120, 0.12);
+  border: 1px solid rgba(80, 220, 120, 0.35);
+  color: #7fe0a0;
+}
+.alert.info {
+  background: rgba(246, 196, 83, 0.1);
+  border: 1px solid rgba(246, 196, 83, 0.3);
+  color: var(--gold);
+}
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.muted {
+  color: var(--ink-dim);
+  font-size: 13px;
+}
+.link {
+  color: var(--gold);
+  cursor: pointer;
+  background: none;
+  border: none;
+  font: inherit;
+  padding: 0;
+  text-decoration: underline;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 700;
+  border: 1px solid var(--line);
+}
+.pill .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.pill.online {
+  background: rgba(80, 220, 120, 0.12);
+  color: #7fe0a0;
+}
+.pill.online .dot {
+  background: #6be08a;
+  box-shadow: 0 0 8px #6be08a;
+}
+.pill.offline {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--ink-dim);
+}
+.pill.offline .dot {
+  background: #7c8090;
+}
+.pill.busy {
+  background: rgba(246, 196, 83, 0.12);
+  color: var(--gold);
+}
+.pill.busy .dot {
+  background: var(--gold);
+  box-shadow: 0 0 8px var(--gold);
+}
+.seg {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  background: #191c26;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 4px;
+}
+.seg button {
+  padding: 11px 6px;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--ink-dim);
+  font-weight: 700;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+}
+.seg button.active {
+  background: var(--grad);
+  color: #161007;
+}
+.delivery {
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: 13px;
+  margin-bottom: 10px;
+  background: #0f1117;
+}
+.delivery h4 {
+  margin: 0 0 4px;
+  font-size: 15px;
+}
+.empty {
+  text-align: center;
+  color: var(--ink-faint, #7c8090);
+  padding: 26px 0;
+  font-size: 14px;
+}
+.center-note {
+  text-align: center;
+  font-size: 13px;
+  color: var(--ink-dim);
+  margin-top: 16px;
+}
+

@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5">
+<meta name="description" content="GetränkeTaxi Greifswald – Nacht-Getränkelieferung. Bier, Softdrinks, Spirituosen & Snacks bis an die Haustür. So–Do 20–02, Fr–Sa 20–04 Uhr.">
+<meta name="theme-color" content="#0a0b0f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GetränkeTaxi">
+<link rel="manifest" href='data:application/manifest+json,{"name":"GetränkeTaxi Greifswald","short_name":"GetränkeTaxi","display":"standalone","background_color":"#0a0b0f","theme_color":"#0a0b0f","start_url":"."}'>
+<title>GetränkeTaxi Greifswald</title>
+<style>
+:root{
+  --bg:#0a0b0f;--bg-2:#0f1117;--panel:#14161e;--panel-2:#191c26;
+  --line:rgba(255,255,255,.10);--line-2:rgba(255,255,255,.18);
+  --ink:#f4f5f8;--ink-dim:#b9bdca;--ink-faint:#7c8090;
+  --gold:#f6c453;--gold-2:#e0a13a;--amber:#ffb020;--lime:#c8ff2e;--rose:#ff4d6d;
+  --grad:linear-gradient(120deg,#f6c453,#ff8a00 55%,#ff6a3d);
+  --radius:18px;--radius-lg:24px;
+  --shadow:0 24px 60px -24px rgba(0,0,0,.9);
+  --app:min(520px,100%);
+  --nav-h:66px;
+  --safe-b:env(safe-area-inset-bottom,0px);
+  --font-display:"Bahnschrift","DIN Alternate","Segoe UI",system-ui,sans-serif;
+  --font-body:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--font-body);line-height:1.55;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+/* Logo als fester Vollbild-Hintergrund */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:url("assets/hero-logo.png") center center/cover no-repeat;
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(8,9,12,.50) 0%,rgba(8,9,12,.60) 45%,rgba(8,9,12,.74) 100%);
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;-webkit-tap-highlight-color:transparent}
+input{font-family:inherit}
+::selection{background:var(--gold);color:#111}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:8px}
+
+/* ===== App-Shell (Handy-Spalte, mittig) ===== */
+.app{
+  position:relative;width:var(--app);margin:0 auto;min-height:100vh;
+  background:rgba(9,10,14,.55);backdrop-filter:blur(10px);
+  border-inline:1px solid var(--line);
+  padding-bottom:calc(var(--nav-h) + var(--safe-b) + 14px);
+}
+
+/* ===== App-Bar ===== */
+.appbar{
+  position:sticky;top:0;z-index:30;
+  display:flex;align-items:center;gap:12px;
+  padding:calc(env(safe-area-inset-top,0px) + 12px) 16px 12px;
+  background:rgba(8,9,12,.78);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700}
+.brand .mark{
+  width:34px;height:34px;border-radius:9px;display:grid;place-items:center;
+  background:var(--grad);color:#161007;font-weight:800;font-size:14px;
+  box-shadow:0 6px 18px -6px rgba(246,196,83,.7);
+}
+.brand b{font-size:16px;line-height:1}
+.brand b span{color:var(--gold)}
+.brand small{display:block;font-family:var(--font-body);font-weight:500;font-size:11px;color:var(--ink-dim);letter-spacing:.2px}
+.appbar .spacer{flex:1}
+.status{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ink-dim);
+  padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--line)}
+.status .dot{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime)}
+
+/* ===== Hero ===== */
+.hero{padding:26px 18px 22px;text-align:left}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;
+  background:rgba(246,196,83,.12);border:1px solid rgba(246,196,83,.4);
+  color:var(--gold);font-size:11.5px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;margin-bottom:16px;
+}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime)}
+.hero h1{
+  font-family:var(--font-display);font-weight:800;font-size:clamp(30px,9vw,40px);
+  line-height:1.04;margin:0 0 12px;letter-spacing:-.4px;text-shadow:0 4px 26px rgba(0,0,0,.85)}
+.hero h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:15px;color:#eef0f6;margin:0 0 18px;text-shadow:0 2px 14px rgba(0,0,0,.9)}
+.cta-row{display:flex;gap:10px;margin-bottom:20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 18px;
+  border-radius:14px;font-weight:700;font-size:15px;flex:1;transition:transform .12s ease}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--grad);color:#161007;box-shadow:0 12px 28px -12px rgba(246,196,83,.75)}
+.btn-ghost{background:rgba(255,255,255,.07);border:1px solid var(--line-2);color:var(--ink);flex:0 0 auto;min-width:56px}
+.stats{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.stats::-webkit-scrollbar{display:none}
+.stat{flex:0 0 auto;padding:12px 16px;border-radius:14px;
+  background:rgba(15,17,23,.7);border:1px solid var(--line);backdrop-filter:blur(6px)}
+.stat b{display:block;font-family:var(--font-display);font-size:20px;color:var(--gold);line-height:1}
+.stat span{font-size:12px;color:var(--ink-dim);white-space:nowrap}
+
+/* ===== Info-Kacheln (Liefergebiet) ===== */
+.info{padding:6px 18px 20px}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.info-cell{padding:14px;border-radius:14px;background:rgba(20,22,30,.7);border:1px solid var(--line)}
+.info-cell .k{font-family:var(--font-display);font-size:19px}
+.info-cell .k.gold{color:var(--gold)}
+.info-cell .l{font-size:12px;color:var(--ink-dim);margin-top:2px}
+
+/* ===== Sortiment ===== */
+.shop{padding:8px 0 22px}
+.shop-head{padding:0 18px 12px}
+.shop-head h2{font-family:var(--font-display);font-size:24px;margin:0}
+.shop-head p{margin:4px 0 0;font-size:13px;color:var(--ink-dim)}
+.search{display:flex;align-items:center;gap:9px;margin:0 18px 12px;
+  padding:13px 15px;border-radius:14px;background:var(--panel);border:1px solid var(--line)}
+.search input{flex:1;background:none;border:none;color:var(--ink);font-size:16px;outline:none}
+.search input::placeholder{color:var(--ink-faint)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:0 18px 4px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;padding:10px 15px;border-radius:999px;font-size:13.5px;font-weight:600;
+  background:var(--panel);border:1px solid var(--line);color:var(--ink-dim)}
+.chip.active{background:var(--grad);color:#161007;border-color:transparent}
+.list{display:flex;flex-direction:column;gap:10px;padding:14px 18px 0}
+.item{display:flex;gap:13px;align-items:center;padding:12px;border-radius:16px;
+  background:var(--panel);border:1px solid var(--line)}
+.item .thumb{flex:0 0 auto;width:64px;height:64px;border-radius:13px;display:grid;place-items:center;
+  position:relative;overflow:hidden;
+  background:linear-gradient(158deg,#252b3b 0%,#141824 48%,#0c0f18 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.10),inset 0 0 0 1px rgba(255,255,255,.05),inset 0 -10px 18px -10px rgba(0,0,0,.6)}
+.item .thumb svg{width:48px;height:48px;overflow:visible}
+/* Animationen der Getränke-Illustrationen */
+.gt-bob{animation:gt-bob 3.6s ease-in-out infinite;transform-origin:50% 60%}
+.gt-bub{transform-box:fill-box;transform-origin:center;animation:gt-bubble 2.8s ease-in infinite}
+.gt-shine{transform-box:fill-box;transform-origin:center;animation:gt-shine 3.4s ease-in-out infinite;opacity:0}
+.gt-steam{transform-box:fill-box;transform-origin:bottom center;animation:gt-steam 2.6s ease-out infinite;opacity:0}
+.gt-glow{transform-box:fill-box;transform-origin:center;animation:gt-glow 2.2s ease-in-out infinite}
+@keyframes gt-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.6px)}}
+@keyframes gt-bubble{0%{transform:translateY(0) scale(.7);opacity:0}18%{opacity:.9}100%{transform:translateY(-16px) scale(1);opacity:0}}
+@keyframes gt-shine{0%{transform:translateX(-14px) rotate(16deg);opacity:0}28%{opacity:.75}55%{opacity:.35}70%,100%{transform:translateX(16px) rotate(16deg);opacity:0}}
+@keyframes gt-steam{0%{transform:translateY(2px) scaleX(.9);opacity:0}30%{opacity:.6}100%{transform:translateY(-9px) scaleX(1.4);opacity:0}}
+@keyframes gt-glow{0%,100%{opacity:.3}50%{opacity:.85}}
+.item .thumb .agebadge{position:absolute;bottom:3px;right:3px;font-size:9px;font-weight:800;
+  background:rgba(0,0,0,.6);color:#fff;padding:1px 5px;border-radius:999px;border:1px solid rgba(255,255,255,.3)}
+.item .body{flex:1;min-width:0}
+.item .body .top{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.item h3{font-size:15px;margin:0}
+.tag{padding:2px 7px;border-radius:999px;font-size:10px;font-weight:700}
+.tag.deal{background:var(--rose);color:#fff}
+.tag.best{background:var(--lime);color:#161007}
+.item .desc{font-size:12px;color:var(--ink-dim);margin:3px 0 0;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.item .foot{display:flex;align-items:center;justify-content:space-between;margin-top:8px;gap:8px}
+.prices{display:flex;align-items:baseline;gap:7px;min-width:0}
+.price{font-family:var(--font-display);font-size:17px;color:var(--gold);white-space:nowrap}
+.oldprice{font-size:12.5px;color:var(--ink-faint);text-decoration:line-through;white-space:nowrap}
+.add{min-height:38px;padding:0 15px;border-radius:11px;background:var(--grad);color:#161007;font-weight:700;font-size:14px}
+.add:active{transform:scale(.96)}
+.stepper{display:flex;align-items:center;gap:2px;background:var(--panel-2);border-radius:11px;padding:3px}
+.stepper button{width:36px;height:36px;border-radius:9px;font-size:20px;font-weight:700;color:var(--gold)}
+.stepper button:active{background:rgba(255,255,255,.1)}
+.stepper .q{min-width:26px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.empty{text-align:center;color:var(--ink-faint);padding:30px 18px}
+
+/* ===== So geht's ===== */
+.how{padding:20px 18px 6px}
+.how h2{font-family:var(--font-display);font-size:22px;margin:0 0 12px}
+.step{display:flex;gap:13px;align-items:flex-start;padding:14px;border-radius:14px;
+  background:rgba(20,22,30,.6);border:1px solid var(--line);margin-bottom:10px}
+.step .n{flex:0 0 auto;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
+  font-family:var(--font-display);font-size:16px;font-weight:800;color:#161007;background:var(--grad)}
+.step h4{margin:0 0 3px;font-size:15px}
+.step p{margin:0;font-size:13px;color:var(--ink-dim)}
+
+/* ===== Footer ===== */
+.foot{padding:22px 18px 10px;color:var(--ink-dim);font-size:13px}
+.foot .fbrand{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.foot a{color:var(--ink-dim)}
+.foot a:active{color:var(--ink)}
+.foot .frow{margin:4px 0}
+.demo-pill{display:inline-block;margin-top:14px;padding:5px 12px;border-radius:999px;
+  background:rgba(255,176,32,.12);border:1px solid rgba(255,176,32,.35);color:var(--amber);font-weight:600;font-size:12px}
+.copy{margin-top:14px;font-size:11.5px;color:var(--ink-faint)}
+
+/* ===== Untere Navigationsleiste ===== */
+.tabbar{
+  position:fixed;left:50%;bottom:0;transform:translateX(-50%);z-index:40;
+  width:var(--app);display:grid;grid-template-columns:repeat(4,1fr);
+  background:rgba(8,9,12,.92);backdrop-filter:blur(16px);
+  border-top:1px solid var(--line-2);
+  padding-bottom:var(--safe-b);
+}
+.tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  height:var(--nav-h);font-size:10.5px;font-weight:600;color:var(--ink-faint);position:relative}
+.tab .ic{font-size:21px;line-height:1}
+.tab.active{color:var(--gold)}
+.tab .badge{position:absolute;top:9px;left:calc(50% + 8px);min-width:17px;height:17px;padding:0 4px;
+  border-radius:999px;background:var(--rose);color:#fff;font-size:10px;font-weight:800;
+  display:none;place-items:center}
+.tab .badge.show{display:grid}
+
+/* ===== Warenkorb als Bottom-Sheet ===== */
+.overlay{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:.25s}
+.overlay.open{opacity:1;pointer-events:auto}
+.sheet{
+  position:fixed;left:50%;bottom:0;transform:translate(-50%,100%);z-index:60;
+  width:var(--app);max-height:90vh;display:flex;flex-direction:column;
+  background:var(--panel);border-top-left-radius:24px;border-top-right-radius:24px;
+  border:1px solid var(--line-2);box-shadow:var(--shadow);
+  transition:transform .3s cubic-bezier(.32,.72,0,1);
+}
+.sheet.open{transform:translate(-50%,0)}
+.sheet .grip{width:40px;height:4px;border-radius:999px;background:var(--line-2);margin:10px auto 4px}
+.sheet .sh{display:flex;align-items:center;justify-content:space-between;padding:6px 20px 14px;border-bottom:1px solid var(--line)}
+.sheet .sh h3{margin:0;font-family:var(--font-display);font-size:20px}
+.sheet .close{width:36px;height:36px;border-radius:10px;font-size:18px;background:var(--panel-2)}
+.slist{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 20px;display:flex;flex-direction:column;gap:10px}
+.sempty{margin:auto;text-align:center;color:var(--ink-faint);padding:30px 0;font-size:14px}
+.sitem{display:flex;gap:11px;align-items:center;padding:11px;border-radius:13px;background:var(--panel-2)}
+.sitem .st{flex:1;min-width:0}
+.sitem .st b{font-size:14px}
+.sitem .st span{display:block;font-size:12px;color:var(--ink-dim)}
+.sitem .sx{width:30px;height:30px;border-radius:9px;color:var(--rose);font-size:16px}
+.sfoot{padding:16px 20px calc(18px + var(--safe-b));border-top:1px solid var(--line);background:var(--panel-2)}
+.srow{display:flex;justify-content:space-between;font-size:14px;color:var(--ink-dim);margin-bottom:7px}
+.srow.total{color:var(--ink);font-size:18px;font-weight:700;margin:10px 0 0;padding-top:10px;border-top:1px solid var(--line)}
+.srow.total b{font-family:var(--font-display);color:var(--gold);font-variant-numeric:tabular-nums}
+.minhint{font-size:12.5px;color:var(--amber);margin:11px 0 0;text-align:center;display:none}
+.minhint.show{display:block}
+.checkout{width:100%;margin-top:12px;min-height:52px;border-radius:14px;background:var(--grad);color:#161007;font-weight:800;font-size:16px}
+.checkout:disabled{opacity:.5}
+.checkout:active{transform:scale(.98)}
+
+/* ===== Toast ===== */
+.toast{position:fixed;left:50%;bottom:calc(var(--nav-h) + 20px + var(--safe-b));transform:translate(-50%,16px);z-index:80;
+  padding:12px 20px;border-radius:12px;background:#161821;border:1px solid var(--line-2);
+  color:var(--ink);font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;box-shadow:var(--shadow);
+  max-width:calc(var(--app) - 36px);text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<main class="app">
+
+  <!-- App-Bar -->
+  <div class="appbar">
+    <a class="brand" href="#top" aria-label="GetränkeTaxi Greifswald">
+      <span class="mark">GT</span>
+      <span><b>Getränke<span>Taxi</span></b><small>Greifswald</small></span>
+    </a>
+    <div class="spacer"></div>
+    <div class="status"><span class="dot"></span> Geöffnet</div>
+    <a class="status" href="/konto" style="margin-left:8px" aria-label="Mein Konto">👤</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <span class="eyebrow"><span class="dot"></span> Nacht-Lieferung · Greifswald</span>
+    <h1>Durst? <em>Wir sind schon unterwegs.</em></h1>
+    <p class="lead">Bier, Softdrinks, Spirituosen & Snacks – eiskalt bis an deine Haustür.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#sortiment">🍺 Jetzt bestellen</a>
+      <a class="btn btn-ghost" href="tel:+491706179083" aria-label="Anrufen">📞</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>⌀ 30 Min</b><span>Lieferzeit</span></div>
+      <div class="stat"><b>3,00 €</b><span>Stadtgebiet</span></div>
+      <div class="stat"><b>9,00 €</b><span>Mindestbestellwert</span></div>
+    </div>
+  </section>
+
+  <!-- Liefergebiet -->
+  <section class="info" id="liefergebiet">
+    <div class="info-grid">
+      <div class="info-cell"><div class="k gold">3,00 €</div><div class="l">Lieferung Stadtgebiet</div></div>
+      <div class="info-cell"><div class="k">7,00 €</div><div class="l">Lieferung bis 5 km</div></div>
+      <div class="info-cell"><div class="k">Individuell</div><div class="l">Weiter draußen</div></div>
+      <div class="info-cell"><div class="k gold">20–02 / 04</div><div class="l">So–Do / Fr–Sa</div></div>
+    </div>
+  </section>
+
+  <!-- Sortiment -->
+  <section class="shop" id="sortiment">
+    <div class="shop-head">
+      <h2>Unser Sortiment</h2>
+      <p>Preise inkl. Pfand · Altersnachweis bei Lieferung.</p>
+    </div>
+    <div class="search">
+      <span>🔍</span>
+      <input type="search" id="search" placeholder="Getränk, Deal oder Snack suchen …" aria-label="Sortiment durchsuchen">
+    </div>
+    <div class="chips" id="chips"></div>
+    <div class="list" id="list"></div>
+  </section>
+
+  <!-- So geht's -->
+  <section class="how" id="sogehts">
+    <h2>So geht's</h2>
+    <div class="step"><div class="n">1</div><div><h4>Aussuchen</h4><p>Getränke in den Warenkorb legen. Mindestbestellwert 9&nbsp;€.</p></div></div>
+    <div class="step"><div class="n">2</div><div><h4>Bestellen</h4><p>Adresse angeben – wir bestätigen telefonisch.</p></div></div>
+    <div class="step"><div class="n">3</div><div><h4>Genießen</h4><p>Eiskalt an die Tür. Bezahlung bei Lieferung.</p></div></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="foot">
+    <div class="fbrand"><span class="mark" style="width:30px;height:30px;font-size:13px;border-radius:8px;display:grid;place-items:center;background:var(--grad);color:#161007;font-weight:800;font-family:var(--font-display)">GT</span><b style="font-family:var(--font-display)">GetränkeTaxi & More</b></div>
+    <div class="frow"><a href="tel:+491706179083">📞 0170 6179083</a></div>
+    <div class="frow">📍 Greifswald + Umgebung · Inh. Mike Gloe</div>
+    <div class="frow">🕗 So–Do 20–02 · Fr–Sa 20–04</div>
+    <div><span class="demo-pill">⚠ Demo – keine echte Bestellung</span></div>
+    <div class="copy">© 2026 GetränkeTaxi & More · <a href="#">Impressum</a> · <a href="#">Datenschutz</a></div>
+  </footer>
+
+</main>
+
+<!-- Untere Navigationsleiste -->
+<nav class="tabbar">
+  <a class="tab active" href="#top" data-tab="top"><span class="ic">🏠</span>Start</a>
+  <a class="tab" href="#sortiment" data-tab="sortiment"><span class="ic">🛍️</span>Sortiment</a>
+  <a class="tab" href="tel:+491706179083"><span class="ic">📞</span>Anrufen</a>
+  <button class="tab" id="tabCart"><span class="ic">🛒</span>Warenkorb<span class="badge" id="tabBadge">0</span></button>
+</nav>
+
+<!-- Warenkorb Bottom-Sheet -->
+<div class="overlay" id="overlay"></div>
+<section class="sheet" id="sheet" aria-label="Warenkorb" aria-hidden="true">
+  <div class="grip"></div>
+  <div class="sh">
+    <h3>Dein Warenkorb</h3>
+    <button class="close" id="closeCart" aria-label="Schließen">✕</button>
+  </div>
+  <div class="slist" id="slist"></div>
+  <div class="sfoot">
+    <div class="srow"><span>Zwischensumme</span><span id="subtotal">0,00 €</span></div>
+    <div class="srow"><span>Lieferung (Stadtgebiet)</span><span>3,00 €</span></div>
+    <div class="srow total"><span>Gesamt</span><b id="total">0,00 €</b></div>
+    <p class="minhint" id="minhint">Noch <span id="minleft">9,00 €</span> bis zum Mindestbestellwert (9&nbsp;€).</p>
+    <button class="checkout" id="checkout" disabled>Sicher bestellen</button>
+  </div>
+</section>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const DATA = {
+  meta:{ deliveryFee:3.0, minOrder:9.0 },
+  categories:[
+    {id:"all",label:"Alle"},{id:"deals",label:"Pakete"},{id:"alkoholfrei",label:"Alkoholfrei"},
+    {id:"bier",label:"Bier"},{id:"mischbier",label:"Mischbier"},{id:"wein",label:"Wein"},
+    {id:"sekt",label:"Sekt"},{id:"likoer",label:"Liköre"},{id:"vodka",label:"Vodka"},
+    {id:"rum",label:"Rum"},{id:"whiskey",label:"Whiskey"},{id:"gin",label:"Gin"},
+    {id:"kraeuter",label:"Kräuter"},{id:"klarer",label:"Klarer/Korn"},{id:"brand",label:"Goldbrand"},
+    {id:"tequila",label:"Tequila"},{id:"dosen",label:"Flachmänner"},{id:"snacks",label:"Snacks"}
+  ],
+  products:[
+    // ===== Pakete / Aktionen =====
+    {id:"zwanie",name:"Der letzte Zwanie",thumb:"20",isDeal:true,bestseller:true,desc:"5× Sternburg Export · 1× Klarer · 1× Funnyfrisch Chips Ungarisch",price:17.0,cat:"deals",ageLimit:18},
+    {id:"wm",name:"Die Weg Mische",thumb:"WM",isDeal:true,bestseller:true,desc:"1× Fjorowka Vodka · 2× Softdrinks nach Wahl",price:16.5,cat:"deals",ageLimit:18},
+    {id:"maedels-sekt",name:"Die Mädels kommen – Sekt",thumb:"MS",isDeal:true,desc:"2× Rotkäppchen · 4× Lübzer Grapefruit/Zitrone",price:21.0,cat:"deals",ageLimit:16},
+    {id:"maedels-wein",name:"Die Mädels kommen – Wein",thumb:"MW",isDeal:true,desc:"2× Weiß- oder Rotwein · 4× Lübzer Grapefruit/Zitrone",price:19.0,cat:"deals",ageLimit:16},
+    {id:"letsgo",name:"Okaaaay, Let’s Gooo!!!",thumb:"GO",isDeal:true,desc:"1× Kiste Heineken/Becks/Carlsberg/Budweiser · 2× Gorbatschow · 4× Softdrink",price:78.0,cat:"deals",ageLimit:18},
+    {id:"knallt",name:"Schmeckt und Knallt",thumb:"SK",isDeal:true,desc:"1× Goldkrone · 1× Eistee",price:15.8,cat:"deals",ageLimit:18},
+    {id:"opa",name:"Opas Mische",thumb:"OP",isDeal:true,desc:"1× Klarer · 2× Softdrink nach Wahl",price:14.5,cat:"deals",ageLimit:18},
+    {id:"garry",name:"Dein Kumpel Garry",thumb:"DG",isDeal:true,desc:"6× Bier nach Wahl · 1× Absolut · 2× Softdrink",price:30.0,cat:"deals",ageLimit:18},
+
+    // ===== Alkoholfreies =====
+    {id:"wasser",name:"Wasser Still/Medium/Classic 0,7 l",thumb:"W",price:2.2,cat:"alkoholfrei",ageLimit:null},
+    {id:"cola",name:"Coca-Cola 1,0 l",thumb:"CO",price:2.7,cat:"alkoholfrei",ageLimit:null},
+    {id:"fanta",name:"Fanta 1,0 l",thumb:"FA",price:2.7,cat:"alkoholfrei",ageLimit:null},
+    {id:"sprite",name:"Sprite 1,0 l",thumb:"SP",price:2.7,cat:"alkoholfrei",ageLimit:null},
+    {id:"mezzo",name:"Mezzo Mix 1,0 l",thumb:"MM",price:2.7,cat:"alkoholfrei",ageLimit:null},
+    {id:"monster",name:"Monster Energy",thumb:"MO",desc:"Verschiedene Sorten",price:2.5,cat:"alkoholfrei",ageLimit:null},
+    {id:"redbull",name:"Red Bull Energy 0,33 l",thumb:"RB",desc:"Verschiedene Sorten",price:2.5,cat:"alkoholfrei",ageLimit:null},
+    {id:"pepsi",name:"Pepsi Cola 1,25 l",thumb:"PE",price:3.0,cat:"alkoholfrei",ageLimit:null},
+    {id:"miomate",name:"Mio Mate 0,5 l",thumb:"MI",price:2.0,cat:"alkoholfrei",ageLimit:null},
+    {id:"glashaeger",name:"Glashäger Sommermix 1 l",thumb:"GH",price:2.3,cat:"alkoholfrei",ageLimit:null},
+    {id:"saft",name:"Saft (Orange, Banane, Kirsche)",thumb:"SA",price:3.5,cat:"alkoholfrei",ageLimit:null},
+    {id:"tonic",name:"Tonic Water",thumb:"TO",price:3.0,cat:"alkoholfrei",ageLimit:null},
+    {id:"pfanner",name:"Pfanner Eistee 2 l",thumb:"PF",desc:"Verschiedene Sorten",price:3.5,cat:"alkoholfrei",ageLimit:null},
+
+    // ===== Bier =====
+    {id:"sternburg",name:"Sternburg Export",thumb:"ST",bestseller:true,price:1.2,cat:"bier",ageLimit:16},
+    {id:"luebzer",name:"Lübzer Pils",thumb:"LÜ",price:1.5,cat:"bier",ageLimit:16},
+    {id:"hasseroeder",name:"Hasseröder Pils",thumb:"HA",price:1.5,cat:"bier",ageLimit:16},
+    {id:"radeberger",name:"Radeberger",thumb:"RA",price:1.5,cat:"bier",ageLimit:16},
+    {id:"krombacher",name:"Krombacher",thumb:"KR",price:1.5,cat:"bier",ageLimit:16},
+    {id:"becks",name:"Beck's",thumb:"B",price:2.0,cat:"bier",ageLimit:16},
+    {id:"carlsberg",name:"Carlsberg",thumb:"CA",price:2.0,cat:"bier",ageLimit:16},
+    {id:"heineken",name:"Heineken 0,4 l",thumb:"HE",price:2.0,cat:"bier",ageLimit:16},
+    {id:"budweiser",name:"Budweiser",thumb:"BU",price:2.0,cat:"bier",ageLimit:16},
+    {id:"tyskie",name:"Tyskie",thumb:"TY",price:2.0,cat:"bier",ageLimit:16},
+    {id:"weissbier",name:"Weißbier",thumb:"WB",price:2.3,cat:"bier",ageLimit:16},
+
+    // ===== Mischbier =====
+    {id:"mixery",name:"Mixery Energy",thumb:"MX",price:2.0,cat:"mischbier",ageLimit:16},
+    {id:"vplus",name:"V+ Energy/Curuba",thumb:"V+",price:1.8,cat:"mischbier",ageLimit:16},
+    {id:"becksice",name:"Becks Ice",thumb:"BI",price:1.8,cat:"mischbier",ageLimit:16},
+    {id:"astra",name:"Astra Rakete/Kiezmische",thumb:"AS",price:1.5,cat:"mischbier",ageLimit:16},
+    {id:"luebzergf",name:"Lübzer Grapefruit/Zitrone",thumb:"LG",price:1.5,cat:"mischbier",ageLimit:16},
+    {id:"desperados",name:"Desperados",thumb:"DE",price:2.7,cat:"mischbier",ageLimit:16},
+
+    // ===== Wein =====
+    {id:"dornfelder",name:"Dornfelder Rotwein",thumb:"DO",desc:"lieblich / halbtrocken / trocken",price:8.0,cat:"wein",ageLimit:16},
+    {id:"pinot",name:"Pinot Weiß trocken",thumb:"PW",price:8.0,cat:"wein",ageLimit:16},
+    {id:"burgunder",name:"Weißer Burgunder halbtrocken",thumb:"WBu",price:8.0,cat:"wein",ageLimit:16},
+    {id:"liebfrauen",name:"Liebfrauenmilch Weiß lieblich",thumb:"LM",price:7.0,cat:"wein",ageLimit:16},
+    {id:"gluehwein",name:"Glühwein",thumb:"GL",price:8.0,cat:"wein",ageLimit:16},
+
+    // ===== Sekt =====
+    {id:"rotk",name:"Rotkäppchen",thumb:"RK",desc:"halbtrocken / trocken / rosé",price:9.0,cat:"sekt",ageLimit:16},
+    {id:"jive",name:"Jive Erdbeer Fruchtsekt",thumb:"JI",price:9.0,cat:"sekt",ageLimit:16},
+
+    // ===== Liköre =====
+    {id:"saurekirsche",name:"Saure Kirsche",thumb:"SKi",price:10.5,cat:"likoer",ageLimit:18},
+    {id:"saurepflaume",name:"Saure Pflaume",thumb:"SPf",price:10.5,cat:"likoer",ageLimit:18},
+    {id:"pfeffi",name:"Pfeffi",thumb:"PF",price:10.5,cat:"likoer",ageLimit:18},
+    {id:"berlinerluft",name:"Berliner Luft",thumb:"BL",price:14.0,cat:"likoer",ageLimit:18},
+    {id:"feigling",name:"Feigling",thumb:"FE",price:15.0,cat:"likoer",ageLimit:18},
+    {id:"kuestennebel",name:"Küstennebel",thumb:"KN",price:15.0,cat:"likoer",ageLimit:18},
+    {id:"eierlikoer",name:"Eierlikör",thumb:"EL",price:13.0,cat:"likoer",ageLimit:18},
+    {id:"malibu",name:"Malibu Strawberry",thumb:"MA",price:17.0,cat:"likoer",ageLimit:18},
+
+    // ===== Vodka (Angebot) =====
+    {id:"fjorowka",name:"Fjorowka",thumb:"FJ",bestseller:true,price:13.5,cat:"vodka",ageLimit:18},
+    {id:"gorbatschow",name:"Gorbatschow",thumb:"GO",price:16.0,cat:"vodka",ageLimit:18},
+    {id:"smirnoff",name:"Smirnoff",thumb:"SM",price:22.5,cat:"vodka",ageLimit:18},
+    {id:"threesixty",name:"Three Sixty",thumb:"360",price:23.5,oldPrice:25.0,cat:"vodka",ageLimit:18},
+    {id:"absolut",name:"Absolut",thumb:"A",price:28.0,cat:"vodka",ageLimit:18},
+
+    // ===== Rum (Angebot) =====
+    {id:"bacardi",name:"Bacardi White/Spiced",thumb:"BA",price:25.0,oldPrice:26.0,cat:"rum",ageLimit:18},
+    {id:"havanna",name:"Havanna Club",thumb:"HC",price:25.0,oldPrice:26.0,cat:"rum",ageLimit:18},
+    {id:"captain",name:"Captain Morgan",thumb:"CM",price:23.5,cat:"rum",ageLimit:18},
+
+    // ===== Whiskey (Angebot) =====
+    {id:"jimbeam",name:"Jim Beam",thumb:"JB",price:28.0,oldPrice:30.0,cat:"whiskey",ageLimit:18},
+    {id:"jackdaniels",name:"Jack Daniel’s",thumb:"JD",price:28.0,oldPrice:30.0,cat:"whiskey",ageLimit:18},
+    {id:"johnnywalker",name:"Johnny Walker Red Label",thumb:"JW",price:28.0,oldPrice:30.0,cat:"whiskey",ageLimit:18},
+
+    // ===== Gin =====
+    {id:"lionheart",name:"Lion Heart",thumb:"LH",price:14.5,cat:"gin",ageLimit:18},
+    {id:"gordons",name:"Gin Gordons",thumb:"GG",price:22.0,cat:"gin",ageLimit:18},
+    {id:"bombay",name:"Gin Bombay",thumb:"BB",price:27.0,cat:"gin",ageLimit:18},
+
+    // ===== Kräuterschnaps =====
+    {id:"gebirgskraeuter",name:"Gebirgskräuter",thumb:"GK",price:10.5,cat:"kraeuter",ageLimit:18},
+    {id:"flaeminger",name:"Fläminger Jagd",thumb:"FL",price:13.5,cat:"kraeuter",ageLimit:18},
+    {id:"jaegermeister",name:"Jägermeister",thumb:"JÄ",price:25.0,cat:"kraeuter",ageLimit:18},
+
+    // ===== Klarer / Korn =====
+    {id:"landhaus",name:"Landhaus Klarer",thumb:"LK",price:10.5,cat:"klarer",ageLimit:18},
+    {id:"weizenkorn",name:"Oldesloer Weizenkorn",thumb:"WK",price:14.0,cat:"klarer",ageLimit:18},
+    {id:"doppelkorn",name:"Oldesloer Doppelkorn",thumb:"DK",price:17.0,cat:"klarer",ageLimit:18},
+    {id:"halberklarer",name:"„Halber Klarer“ 0,35 l",thumb:"½",price:7.0,cat:"klarer",ageLimit:18},
+
+    // ===== Goldbrand =====
+    {id:"goldkrone",name:"Wilthener Goldkrone",thumb:"WG",price:13.5,cat:"brand",ageLimit:18},
+
+    // ===== Tequila =====
+    {id:"sierra",name:"Sierra Tequila Gold/Silber",thumb:"SI",price:24.0,cat:"tequila",ageLimit:18},
+
+    // ===== Profidosen / Flachmänner =====
+    {id:"captaincola",name:"Captain Morgan Cola",thumb:"CC",price:6.0,cat:"dosen",ageLimit:18},
+    {id:"jackcola",name:"Jack Daniel’s Cola",thumb:"JC",price:6.0,cat:"dosen",ageLimit:18},
+    {id:"pfeffi01",name:"Pfeffi 0,1 l",thumb:"P1",price:3.0,cat:"dosen",ageLimit:18},
+    {id:"jaeger01",name:"Jägermeister 0,1 l",thumb:"J1",price:5.5,cat:"dosen",ageLimit:18},
+    {id:"fjorowka01",name:"Fjorowka 0,1 l",thumb:"F1",price:3.5,cat:"dosen",ageLimit:18},
+    {id:"smirnoffice",name:"Smirnoff ICE",thumb:"SC",price:5.5,cat:"dosen",ageLimit:18},
+
+    // ===== Snacks =====
+    {id:"chips",name:"FunnyFrisch Chips Ungarisch",thumb:"FF",price:3.0,cat:"snacks",ageLimit:null},
+    {id:"flips",name:"Lorenz Erdnuss Flips",thumb:"LF",price:3.7,cat:"snacks",ageLimit:null},
+    {id:"salzstangen",name:"Lorenz Salzstangen",thumb:"LS",price:3.5,cat:"snacks",ageLimit:null},
+    {id:"goldbaeren",name:"Haribo Goldbären",thumb:"HG",price:3.5,cat:"snacks",ageLimit:null},
+    {id:"ballastixx",name:"Haribo Ballastixx",thumb:"HB",desc:"Verschiedene Sorten",price:3.5,cat:"snacks",ageLimit:null},
+    {id:"erasco",name:"Erasco Suppen / Eintöpfe",thumb:"ER",desc:"Verschiedene Sorten",price:6.0,cat:"snacks",ageLimit:null}
+  ]
+};
+const eur = n => n.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2})+" €";
+
+/* ===== Realistische, animierte Getränke-Illustrationen ===== */
+const GLASS_FILL="rgba(255,255,255,.055)", GLASS_STROKE="rgba(255,255,255,.5)";
+const grad=(id,st,horiz)=>`<linearGradient id="${id}" x1="0" y1="0" x2="${horiz?1:0}" y2="${horiz?0:1}">`+
+  st.map((c,i)=>`<stop offset="${(i/(st.length-1)).toFixed(2)}" stop-color="${c}"/>`).join('')+`</linearGradient>`;
+const S=inner=>`<svg viewBox="0 0 48 48" class="gt gt-bob" aria-hidden="true">${inner}</svg>`;
+const shadow=(rx=8)=>`<ellipse cx="24" cy="45.4" rx="${rx}" ry="1.8" fill="rgba(0,0,0,.45)"/>`;
+const shine=(x,y,w,h,r=2)=>`<rect class="gt-shine" x="${x}" y="${y}" width="${w}" height="${h}" rx="${r}" fill="rgba(255,255,255,.4)"/>`;
+const bubs=(cx,cy,n=4,sp=2)=>Array.from({length:n},(_,i)=>
+  `<circle class="gt-bub" cx="${(cx+((i%3)-1)*sp).toFixed(1)}" cy="${cy}" r="${(0.8+(i%2)*0.5).toFixed(1)}" fill="rgba(255,255,255,.72)" style="animation-delay:${(i*0.5).toFixed(2)}s"/>`).join('');
+
+// --- Flasche ---
+function bottle(k,o){
+  const body="M18.5 7h11v5.2c0 1.7 3.4 3.1 3.4 7.6V40a3.2 3.2 0 0 1-3.2 3.2H18.3A3.2 3.2 0 0 1 15.1 40V19.8c0-4.5 3.4-5.9 3.4-7.6V7Z";
+  const lvl=o.level!=null?o.level:19, cap=o.cap||"#cfd3da";
+  let d=`<defs>${grad(k+'-l',o.liquid)}<clipPath id="${k}-c"><path d="${body}"/></clipPath></defs>`;
+  let g=shadow(8.2);
+  g+=`<path d="${body}" fill="${GLASS_FILL}" stroke="${GLASS_STROKE}" stroke-width="1"/>`;
+  g+=`<g clip-path="url(#${k}-c)">`;
+  g+=`<rect x="13" y="${lvl}" width="22" height="30" fill="url(#${k}-l)"/>`;
+  g+=`<rect x="13" y="${lvl}" width="22" height="1.8" fill="rgba(255,255,255,.28)"/>`;
+  if(o.bubbles) g+=bubs(24,41,4,2.2);
+  if(o.label) g+=`<rect x="17.4" y="26" width="13.2" height="9.5" rx="1.6" fill="${o.label}"/><rect x="17.4" y="28.6" width="13.2" height="1.2" fill="rgba(0,0,0,.12)"/>`;
+  g+=shine(9,3,5.5,42,3)+`</g>`;
+  g+=`<path d="M19 13c-1 1.6-1.6 3.2-1.6 6.2V39" stroke="rgba(255,255,255,.32)" stroke-width="1.1" fill="none"/>`;
+  g+=`<rect x="18.2" y="2.6" width="11.6" height="5.8" rx="1.3" fill="${cap}"/><rect x="19" y="8.4" width="10" height="1.6" fill="rgba(0,0,0,.25)"/>`;
+  if(o.leaf) g+=`<path d="M29.5 12.5c2.6-.5 4.4-.2 5.3.7-1 1.6-3 2-5.3 1" fill="#4f9636" stroke="none"/><path d="M27.6 13c-.2-2.4.4-4.1 1.4-4.8 1.1 1.4 1.2 3.4 0 5.2" fill="#5fb043" stroke="none"/>`;
+  return S(d+g);
+}
+// --- Weinglas ---
+function wine(k,liquid){
+  const bowl="M16 8h16l-1.7 8.6A6.7 6.7 0 0 1 24 22.2a6.7 6.7 0 0 1-6.3-5.6L16 8Z";
+  return S(`<defs>${grad(k+'-l',liquid)}<clipPath id="${k}-c"><path d="${bowl}"/></clipPath></defs>`+
+    shadow(6.5)+`<path d="${bowl}" fill="${GLASS_FILL}" stroke="${GLASS_STROKE}" stroke-width="1"/>`+
+    `<g clip-path="url(#${k}-c)"><rect x="15" y="13" width="18" height="12" fill="url(#${k}-l)"/><rect x="15" y="13" width="18" height="1.6" fill="rgba(255,255,255,.3)"/>${shine(12,4,4,22,2)}</g>`+
+    `<path d="M24 22.2V35" stroke="rgba(255,255,255,.6)" stroke-width="1.6"/><path d="M18 35.5h12" stroke="rgba(255,255,255,.6)" stroke-width="1.8" stroke-linecap="round"/>`);
+}
+// --- Sektflöte ---
+function sekt(k){
+  const bowl="M20 6.5h8l-1.1 14.2a2.9 2.9 0 0 1-5.8 0L20 6.5Z";
+  return S(`<defs>${grad(k+'-l',['#f6dd8e','#dcae45'])}<clipPath id="${k}-c"><path d="${bowl}"/></clipPath></defs>`+
+    shadow(5.5)+`<path d="${bowl}" fill="${GLASS_FILL}" stroke="${GLASS_STROKE}" stroke-width="1"/>`+
+    `<g clip-path="url(#${k}-c)"><rect x="19" y="12" width="10" height="10" fill="url(#${k}-l)"/>`+
+    Array.from({length:6},(_,i)=>`<circle class="gt-bub" cx="${(23+((i%3)-1)*1.6).toFixed(1)}" cy="20" r=".8" fill="rgba(255,255,255,.9)" style="animation-delay:${(i*0.38).toFixed(2)}s"/>`).join('')+
+    shine(16.5,4,3,18,1.5)+`</g>`+
+    `<path d="M24 23.5V36M19.5 36.5h9" stroke="rgba(255,255,255,.6)" stroke-width="1.7" stroke-linecap="round"/>`);
+}
+// --- Tumbler (Whiskey) mit Eiswürfel ---
+function tumbler(k,liquid){
+  const gl="M15 18h18l-1.3 19.6a3 3 0 0 1-3 2.8H19.3a3 3 0 0 1-3-2.8L15 18Z";
+  return S(`<defs>${grad(k+'-l',liquid)}<clipPath id="${k}-c"><path d="${gl}"/></clipPath></defs>`+
+    shadow(8)+`<path d="${gl}" fill="${GLASS_FILL}" stroke="${GLASS_STROKE}" stroke-width="1"/>`+
+    `<g clip-path="url(#${k}-c)"><rect x="14" y="27" width="20" height="16" fill="url(#${k}-l)"/><rect x="14" y="27" width="20" height="1.6" fill="rgba(255,255,255,.25)"/>`+
+    `<rect x="19" y="24" width="7" height="7" rx="1.5" transform="rotate(-8 22.5 27.5)" fill="rgba(210,235,255,.4)" stroke="rgba(255,255,255,.55)" stroke-width=".8"/>`+
+    shine(12,16,5,28,2.5)+`</g>`);
+}
+// --- Shot (Tequila) mit Limette ---
+function shot(k){
+  const gl="M18 16h12l-1.2 22a2.5 2.5 0 0 1-2.5 2.3H21.7a2.5 2.5 0 0 1-2.5-2.3L18 16Z";
+  return S(`<defs>${grad(k+'-l',['#f2ce66','#c9931f'])}<clipPath id="${k}-c"><path d="${gl}"/></clipPath></defs>`+
+    shadow(6)+`<path d="${gl}" fill="${GLASS_FILL}" stroke="${GLASS_STROKE}" stroke-width="1"/>`+
+    `<g clip-path="url(#${k}-c)"><rect x="17" y="24" width="14" height="18" fill="url(#${k}-l)"/>${shine(15,14,4,30,2)}</g>`+
+    `<g><circle cx="31.5" cy="14" r="3.6" fill="#8fd44a" stroke="#5a9a2a" stroke-width="1"/><path d="M31.5 10.4v7.2M27.9 14h7.2" stroke="#eaffce" stroke-width=".8"/></g>`);
+}
+// --- Hohes Glas (Saft/Eistee) ---
+function tallGlass(k,o){
+  const gl="M17 12h14l-1.4 25.6a3 3 0 0 1-3 2.7H21.4a3 3 0 0 1-3-2.7L17 12Z";
+  let g=`<defs>${grad(k+'-l',o.liquid)}<clipPath id="${k}-c"><path d="${gl}"/></clipPath></defs>`;
+  g+=shadow(7.5)+`<path d="${gl}" fill="${GLASS_FILL}" stroke="${GLASS_STROKE}" stroke-width="1"/>`;
+  g+=`<g clip-path="url(#${k}-c)"><rect x="16" y="16" width="16" height="26" fill="url(#${k}-l)"/><rect x="16" y="16" width="16" height="1.6" fill="rgba(255,255,255,.3)"/>`;
+  if(o.ice) g+=`<rect x="19" y="19" width="6" height="6" rx="1.3" transform="rotate(-10 22 22)" fill="rgba(255,255,255,.35)" stroke="rgba(255,255,255,.5)" stroke-width=".7"/><rect x="24" y="26" width="5.5" height="5.5" rx="1.2" transform="rotate(12 26 28)" fill="rgba(255,255,255,.3)" stroke="rgba(255,255,255,.5)" stroke-width=".7"/>`;
+  g+=shine(14,10,4,32,2)+`</g>`;
+  if(o.straw) g+=`<path d="M26 8l-3 32" stroke="#ff5d7a" stroke-width="2.4" stroke-linecap="round"/>`;
+  if(o.lemon) g+=`<circle cx="30" cy="14" r="3.4" fill="#ffe14d" stroke="#d9a400" stroke-width="1"/><path d="M30 10.6v6.8M26.6 14h6.8" stroke="#fff6c0" stroke-width=".8"/>`;
+  return S(g);
+}
+// --- Tasse (Glühwein) mit Dampf ---
+function mug(k){
+  const body="M12.5 14h17v12.5a8 8 0 0 1-8 8h-1a8 8 0 0 1-8-8V14Z";
+  return S(`<defs>${grad(k+'-l',['#8a1626','#4a0a14'])}<clipPath id="${k}-c"><path d="${body}"/></clipPath></defs>`+
+    Array.from({length:3},(_,i)=>`<path class="gt-steam" d="M${17+i*7} 12c-1.4-1.6-1.4-3 0-4.6" stroke="rgba(255,255,255,.6)" stroke-width="1.4" fill="none" style="animation-delay:${(i*0.5).toFixed(2)}s"/>`).join('')+
+    shadow(9)+`<path d="${body}" fill="${GLASS_FILL}" stroke="${GLASS_STROKE}" stroke-width="1"/>`+
+    `<path d="M29.5 16.5h2.5a4 4 0 0 1 0 8h-2" fill="none" stroke="${GLASS_STROKE}" stroke-width="1.6"/>`+
+    `<g clip-path="url(#${k}-c)"><rect x="11" y="18" width="20" height="18" fill="url(#${k}-l)"/><rect x="11" y="18" width="20" height="1.6" fill="rgba(255,255,255,.2)"/>${shine(11,13,4,22,2)}</g>`);
+}
+// --- Dose ---
+function can(k,o){
+  const body="M16.5 9h15v28.5a3.2 3.2 0 0 1-3.2 3.2H19.7a3.2 3.2 0 0 1-3.2-3.2V9Z";
+  let d=`<defs>${grad(k+'-b',o.body,true)}${o.band?grad(k+'-band',o.band):''}</defs>`;
+  let g=shadow(7.5);
+  if(o.glow) g+=`<rect class="gt-glow" x="13.5" y="7" width="21" height="35" rx="5" fill="${o.glow}"/>`;
+  g+=`<path d="${body}" fill="url(#${k}-b)" stroke="rgba(255,255,255,.3)" stroke-width="1"/>`;
+  g+=`<rect x="16.5" y="7.2" width="15" height="2.6" rx="1.2" fill="rgba(255,255,255,.55)"/><ellipse cx="24" cy="8.2" rx="7.4" ry="1.5" fill="rgba(0,0,0,.35)"/>`;
+  g+=`<ellipse cx="24" cy="12.4" rx="2.4" ry="1.1" fill="none" stroke="rgba(255,255,255,.5)" stroke-width=".9"/>`;
+  if(o.band) g+=`<rect x="16.5" y="19.5" width="15" height="9.5" fill="url(#${k}-band)"/>`;
+  if(o.bolt) g+=`<path d="M25.6 17l-5 8.2h3.4l-1.2 6.3 5.6-9.4h-3.4l1-5.1Z" fill="${o.bolt}"/>`;
+  g+=shine(15,9,4,30,2);
+  return S(d+g);
+}
+// --- Flachmann ---
+function flask(k){
+  const body="M17 9h14l-1.2 3.4c-.3.9-.3 1.3 0 2.1l.5 1.2c.9 2.3.9 2.9.9 5.6V38a3.6 3.6 0 0 1-3.6 3.6h-7.2A3.6 3.6 0 0 1 16.8 38V21.3c0-2.7 0-3.3.9-5.6l.5-1.2c.3-.8.3-1.2 0-2.1L17 9Z";
+  return S(`<defs>${grad(k+'-b',['#e2e6ec','#a7adba','#e2e6ec'],true)}<clipPath id="${k}-c"><path d="${body}"/></clipPath></defs>`+
+    shadow(7)+`<path d="${body}" fill="url(#${k}-b)" stroke="rgba(255,255,255,.4)" stroke-width="1"/>`+
+    `<rect x="19" y="6" width="10" height="4" rx="1.2" fill="#8b909c"/>`+
+    `<g clip-path="url(#${k}-c)"><rect x="20" y="20" width="8" height="14" rx="1.5" fill="rgba(60,66,80,.55)"/>${shine(15,10,4,32,2)}</g>`);
+}
+// --- Paket ---
+function box(k){
+  return S(shadow(11)+
+    `<rect x="17" y="9.5" width="3.4" height="9" rx="1" fill="#3f8a30"/><rect x="16.3" y="7.8" width="4.8" height="2.6" rx=".8" fill="#cfd3da"/>`+
+    `<rect x="26.5" y="8.5" width="3.4" height="10" rx="1" fill="#c58b2a"/><rect x="25.8" y="6.8" width="4.8" height="2.6" rx=".8" fill="#cfd3da"/>`+
+    `<rect x="21.8" y="9" width="3.4" height="9.5" rx="1" fill="#b23a3a"/><rect x="21.1" y="7.3" width="4.8" height="2.6" rx=".8" fill="#cfd3da"/>`+
+    `<path d="M11.5 20 24 15l12.5 5-12.5 4.6L11.5 20Z" fill="#a9743a"/>`+
+    `<path d="M11.5 20h25v17a2 2 0 0 1-2 2H13.5a2 2 0 0 1-2-2V20Z" fill="#8a5a2c" stroke="rgba(0,0,0,.25)"/>`+
+    `<path d="M24 24.6V39" stroke="rgba(0,0,0,.22)"/><path d="M11.5 20 24 24.6 36.5 20" fill="none" stroke="rgba(0,0,0,.18)"/>`+
+    shine(11,15,5,26,2));
+}
+// --- Snacks ---
+function chipsBag(k,liquid){
+  const body="M14 12h20v25a2 2 0 0 1-2 2H16a2 2 0 0 1-2-2V12Z";
+  return S(`<defs>${grad(k+'-b',liquid)}<clipPath id="${k}-c"><path d="${body}"/></clipPath></defs>`+
+    shadow(9)+`<path d="M14 12l2.5-2 2.5 2 2.5-2 2.5 2 2.5-2 2.5 2 2.5-2 2.5 2" fill="none" stroke="url(#${k}-b)" stroke-width="2"/>`+
+    `<path d="${body}" fill="url(#${k}-b)" stroke="rgba(0,0,0,.25)" stroke-width=".8"/>`+
+    `<rect x="17" y="20" width="14" height="8" rx="1.5" fill="rgba(255,255,255,.85)"/>`+
+    `<g clip-path="url(#${k}-c)">${shine(12,10,5,30,2)}</g>`);
+}
+function gummyBear(k){
+  const body="M15 15c-1.5 0-2.5-1.2-2.5-2.6 0-1.4 1-2.4 2.4-2.4.1-1.6 1.2-2.6 2.6-2.6 1 0 1.8.5 2.3 1.3.6-.5 1.4-.5 2 0 .5-.8 1.3-1.3 2.3-1.3 1.4 0 2.5 1 2.6 2.6 1.4 0 2.4 1 2.4 2.4 0 1.4-1 2.6-2.5 2.6v6.5a6 6 0 0 1-6 6h-1.6a6 6 0 0 1-6-6V15Z";
+  return S(`<defs>${grad(k+'-b',['#ff9a3c','#e2611a'])}</defs>`+shadow(7)+
+    `<path d="${body}" fill="url(#${k}-b)" stroke="rgba(0,0,0,.15)" stroke-width=".8"/>`+
+    `<circle cx="20.5" cy="17" r="1" fill="#3a1c0a"/><circle cx="25" cy="17" r="1" fill="#3a1c0a"/><path d="M21 20.5c.8.8 1.9.8 2.7 0" stroke="#3a1c0a" stroke-width="1" fill="none" stroke-linecap="round"/>`+
+    `<ellipse cx="19" cy="13" rx="1.4" ry="1.8" fill="rgba(255,255,255,.4)"/>`);
+}
+function sticks(k){
+  let g=shadow(8);
+  const c="#d79a4e";
+  for(let i=0;i<4;i++){const x=15+i*3.4;g+=`<rect x="${x}" y="8" width="2.4" height="32" rx="1.2" transform="rotate(${-8+i*4} ${x+1} 24)" fill="${c}" stroke="#a06a2c" stroke-width=".6"/>`;}
+  g+=`<circle cx="20" cy="16" r=".7" fill="#fff"/><circle cx="26" cy="22" r=".7" fill="#fff"/><circle cx="23" cy="30" r=".7" fill="#fff"/>`;
+  return S(g);
+}
+function soup(k){
+  const bowl="M9 22h30a15 15 0 0 1-15 13A15 15 0 0 1 9 22Z";
+  return S(`<defs>${grad(k+'-l',['#e8a23d','#b5701a'])}</defs>`+
+    Array.from({length:3},(_,i)=>`<path class="gt-steam" d="M${18+i*6} 18c-1.4-1.6-1.4-3 0-4.6" stroke="rgba(255,255,255,.55)" stroke-width="1.4" fill="none" style="animation-delay:${(i*0.5).toFixed(2)}s"/>`).join('')+
+    shadow(13)+`<path d="${bowl}" fill="url(#${k}-l)" stroke="rgba(0,0,0,.2)" stroke-width="1"/>`+
+    `<path d="M9 22h30" stroke="rgba(255,255,255,.35)" stroke-width="1.4"/><ellipse cx="24" cy="22" rx="15" ry="2.4" fill="rgba(255,255,255,.12)"/>`);
+}
+
+/* Registry – jede Sorte einmal vorgebaut */
+const ICONS={
+  package:box('package'),
+  beer:bottle('beer',{liquid:['#f2b24d','#c07d1e'],label:'#f4ecd8',cap:'#e0b64a',bubbles:true,level:20}),
+  cola:bottle('cola',{liquid:['#5f3421','#2c140b'],bubbles:true,level:18}),
+  fanta:bottle('fanta',{liquid:['#ff9e21','#e15e00'],bubbles:true,level:18}),
+  sprite:bottle('sprite',{liquid:['rgba(206,240,214,.92)','rgba(150,214,175,.78)'],bubbles:true,level:18}),
+  water:bottle('water',{liquid:['rgba(180,224,255,.82)','rgba(110,185,235,.66)'],level:16}),
+  mate:bottle('mate',{liquid:['#d79a3a','#9c6516'],leaf:true,bubbles:true,level:18}),
+  vodka:bottle('vodka',{liquid:['rgba(233,238,255,.55)','rgba(196,210,236,.4)'],level:15}),
+  rum:bottle('rum',{liquid:['#8a4a1e','#54280e'],label:'#e8d3b0',level:16}),
+  gin:bottle('gin',{liquid:['rgba(233,238,255,.5)','rgba(196,210,236,.38)'],leaf:true,level:16}),
+  korn:bottle('korn',{liquid:['rgba(236,240,250,.5)','rgba(205,214,236,.38)'],level:15}),
+  liqueur:bottle('liqueur',{liquid:['#c93a7d','#7c1f4e'],label:'#f6e2ee',level:17}),
+  herbal:bottle('herbal',{liquid:['#3f5f2c','#213617'],label:'#e8dfa0',level:16}),
+  brandy:bottle('brandy',{liquid:['#c8791f','#7a3d0c'],label:'#f0dca8',cap:'#e0b64a',level:16}),
+  wine:wine('wine',['#8e1b2e','#520d1a']),
+  whiskey:tumbler('whiskey',['#c07423','#7a3d0c']),
+  tequila:shot('tequila'),
+  juice:tallGlass('juice',{liquid:['#ffb02e','#f27f0c'],straw:true}),
+  icetea:tallGlass('icetea',{liquid:['#b5701a','#7a3f10'],ice:true,lemon:true,straw:true}),
+  gluehwein:mug('gluehwein'),
+  sekt:sekt('sekt'),
+  energy:can('energy',{body:['#2b3140','#0d1016','#2b3140'],glow:'#9dff3c',bolt:'#c8ff2e'}),
+  canMix:can('canmix',{body:['#d7dde4','#8f97a3','#d7dde4'],band:['#ff6a3d','#c0342a']}),
+  flask:flask('flask'),
+  chips:chipsBag('chips',['#e23b3b','#8f1f1f']),
+  gummy:gummyBear('gummy'),
+  sticks:sticks('sticks'),
+  soup:soup('soup')
+};
+const CAT_ICON={deals:"package",alkoholfrei:"cola",bier:"beer",mischbier:"canMix",wein:"wine",sekt:"sekt",
+  likoer:"liqueur",vodka:"vodka",rum:"rum",whiskey:"whiskey",gin:"gin",kraeuter:"herbal",klarer:"korn",
+  brand:"brandy",tequila:"tequila",dosen:"canMix",snacks:"chips"};
+const ID_ICON={wasser:"water",monster:"energy",redbull:"energy",saft:"juice",pfanner:"icetea",miomate:"mate",
+  gluehwein:"gluehwein",desperados:"beer",fanta:"fanta",sprite:"sprite",glashaeger:"sprite",tonic:"sprite",
+  pfeffi01:"flask",jaeger01:"flask",fjorowka01:"flask",smirnoffice:"cola",captaincola:"canMix",jackcola:"canMix",
+  flips:"sticks",salzstangen:"sticks",goldbaeren:"gummy",ballastixx:"gummy",erasco:"soup"};
+const iconFor = p => ICONS[ID_ICON[p.id]||CAT_ICON[p.cat]||"cola"];
+
+const cart = new Map();
+let activeCat="all", query="";
+
+/* Chips */
+const chipsEl=document.getElementById("chips");
+DATA.categories.forEach(c=>{
+  const b=document.createElement("button");
+  b.className="chip"+(c.id==="all"?" active":""); b.textContent=c.label;
+  b.onclick=()=>{activeCat=c.id;[...chipsEl.children].forEach(x=>x.classList.toggle("active",x===b));render();};
+  chipsEl.appendChild(b);
+});
+
+/* Liste */
+const listEl=document.getElementById("list");
+function render(){
+  const q=query.trim().toLowerCase();
+  const list=DATA.products.filter(p=>(activeCat==="all"||p.cat===activeCat)&&(!q||p.name.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q)));
+  listEl.innerHTML="";
+  if(!list.length){listEl.innerHTML='<div class="empty">Nichts gefunden – probier einen anderen Suchbegriff.</div>';return;}
+  list.forEach(p=>{
+    const qty=cart.get(p.id)||0;
+    const el=document.createElement("article");el.className="item";
+    el.innerHTML=`
+      <div class="thumb">${iconFor(p)}${p.ageLimit?`<span class="agebadge">${p.ageLimit}+</span>`:''}</div>
+      <div class="body">
+        <div class="top">
+          <h3>${p.name}</h3>
+          ${(p.isDeal||p.oldPrice)?'<span class="tag deal">Angebot</span>':''}
+          ${p.bestseller?'<span class="tag best">Bestseller</span>':''}
+        </div>
+        ${p.desc?`<p class="desc">${p.desc}</p>`:''}
+        <div class="foot">
+          <span class="prices">${p.oldPrice?`<span class="oldprice">${eur(p.oldPrice)}</span>`:''}<span class="price">${eur(p.price)}</span></span>
+          <div class="ctrl"></div>
+        </div>
+      </div>`;
+    const ctrl=el.querySelector(".ctrl");
+    if(qty>0){
+      ctrl.innerHTML=`<div class="stepper"><button aria-label="Weniger">−</button><span class="q">${qty}</span><button aria-label="Mehr">+</button></div>`;
+      const bs=ctrl.querySelectorAll("button");
+      bs[0].onclick=()=>chg(p.id,-1);bs[1].onclick=()=>chg(p.id,1);
+    }else{
+      const b=document.createElement("button");b.className="add";b.textContent="+ Add";
+      b.onclick=()=>{chg(p.id,1);toast(p.name+" hinzugefügt");};ctrl.appendChild(b);
+    }
+    listEl.appendChild(el);
+  });
+}
+document.getElementById("search").addEventListener("input",e=>{query=e.target.value;render();});
+
+/* Warenkorb */
+function chg(id,d){const q=(cart.get(id)||0)+d;if(q<=0)cart.delete(id);else cart.set(id,q);render();updateCart();}
+function updateCart(){
+  let count=0,sub=0;
+  cart.forEach((q,id)=>{const p=DATA.products.find(x=>x.id===id);count+=q;sub+=p.price*q;});
+  const min=DATA.meta.minOrder,fee=DATA.meta.deliveryFee;
+  const badge=document.getElementById("tabBadge");
+  badge.textContent=count;badge.classList.toggle("show",count>0);
+  document.getElementById("subtotal").textContent=eur(sub);
+  document.getElementById("total").textContent=eur(count?sub+fee:0);
+  const sl=document.getElementById("slist");
+  if(!count){sl.innerHTML='<div class="sempty">🛒<br>Dein Warenkorb ist noch leer.</div>';}
+  else{
+    sl.innerHTML="";
+    cart.forEach((q,id)=>{
+      const p=DATA.products.find(x=>x.id===id);
+      const row=document.createElement("div");row.className="sitem";
+      row.innerHTML=`<div class="st"><b>${p.name}</b><span>${eur(p.price)} × ${q} = ${eur(p.price*q)}</span></div>
+        <div class="stepper"><button aria-label="Weniger">−</button><span class="q">${q}</span><button aria-label="Mehr">+</button></div>
+        <button class="sx" aria-label="Entfernen">🗑</button>`;
+      const bs=row.querySelectorAll(".stepper button");
+      bs[0].onclick=()=>chg(id,-1);bs[1].onclick=()=>chg(id,1);
+      row.querySelector(".sx").onclick=()=>{cart.delete(id);render();updateCart();};
+      sl.appendChild(row);
+    });
+  }
+  const hint=document.getElementById("minhint"),co=document.getElementById("checkout");
+  if(count&&sub<min){hint.classList.add("show");document.getElementById("minleft").textContent=eur(min-sub);co.disabled=true;}
+  else{hint.classList.remove("show");co.disabled=!count;}
+}
+
+/* Sheet */
+const overlay=document.getElementById("overlay"),sheet=document.getElementById("sheet");
+function openCart(){overlay.classList.add("open");sheet.classList.add("open");sheet.setAttribute("aria-hidden","false");}
+function closeCart(){overlay.classList.remove("open");sheet.classList.remove("open");sheet.setAttribute("aria-hidden","true");}
+document.getElementById("tabCart").onclick=openCart;
+document.getElementById("closeCart").onclick=closeCart;
+overlay.onclick=closeCart;
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeCart();});
+/* Checkout: echte Bestellung an Supabase (Fallback: Demo, wenn offline/als Datei geöffnet) */
+document.getElementById("checkout").onclick=async()=>{
+  const co=document.getElementById("checkout");
+  if(co.disabled)return;
+  const items=[...cart.entries()].map(([id,q])=>{const p=DATA.products.find(x=>x.id===id);
+    return{product_id:id,name:p.name,unit_price:p.price,quantity:q};});
+  if(!items.length)return;
+  co.disabled=true;const label=co.textContent;co.textContent="Wird gesendet …";
+  try{
+    const res=await fetch("/api/customer/orders",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({items,delivery_zone:"city"})});
+    if(res.status===401){toast("Bitte zuerst anmelden 🔑");setTimeout(()=>location.href="/login?next=/shop",900);return;}
+    const data=await res.json().catch(()=>({}));
+    if(!res.ok)throw new Error(data.error||"Bestellung fehlgeschlagen");
+    const nr=data.order&&data.order.order_number;
+    cart.clear();render();updateCart();closeCart();
+    toast(nr?("Bestellung #"+nr+" aufgegeben! 🚕"):"Bestellung aufgegeben! 🚕");
+  }catch(err){
+    // Standalone/Datei-Modus: kein Backend erreichbar -> Demo
+    closeCart();toast("Demo: Bestellung würde jetzt gesendet. 🚕");
+  }finally{co.textContent=label;updateCart();}
+};
+
+/* Aktiver Tab beim Scrollen */
+const tabs=[...document.querySelectorAll('.tab[data-tab]')];
+const secs={top:document.getElementById("top"),sortiment:document.getElementById("sortiment")};
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  const id=e.target.id;tabs.forEach(t=>t.classList.toggle("active",t.dataset.tab===id));}});},{rootMargin:"-45% 0px -50% 0px"});
+Object.values(secs).forEach(s=>s&&io.observe(s));
+
+/* Toast */
+let toastT;
+function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("show"),2000);}
+
+render();updateCart();
+</script>
+</body>
+</html>

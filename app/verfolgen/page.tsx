@@ -37,16 +37,20 @@ export default function VerfolgenPage() {
   const cMarker = useRef<LeafletNS.Marker | null>(null);
 
   const [phase, setPhase] = useState<"loading" | "none" | "active">("loading");
+  const [mapReady, setMapReady] = useState(false);
   const [order, setOrder] = useState<Order | null>(null);
   const [driverLoc, setDriverLoc] = useState<Loc | null>(null);
   const [custLoc, setCustLoc] = useState<Loc | null>(null);
   const [updated, setUpdated] = useState<string>("");
 
-  // Karte initialisieren (nur Client)
+  // Karte initialisieren, sobald der Karten-Container sichtbar ist (aktive Lieferung).
   useEffect(() => {
+    if (phase !== "active" || map.current) return;
     let cancelled = false;
     (async () => {
       const leaflet = await import("leaflet");
+      // kurz warten, bis der Container gerendert ist
+      await new Promise((r) => setTimeout(r, 0));
       if (cancelled || !mapEl.current || map.current) return;
       L.current = leaflet;
       const m = leaflet.map(mapEl.current, { zoomControl: true, attributionControl: true }).setView(GREIFSWALD, 13);
@@ -57,12 +61,13 @@ export default function VerfolgenPage() {
         })
         .addTo(m);
       map.current = m;
-      setTimeout(() => m.invalidateSize(), 120);
+      setMapReady(true);
+      setTimeout(() => m.invalidateSize(), 150);
     })();
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [phase]);
 
   // Tracking pollen
   useEffect(() => {
@@ -124,7 +129,7 @@ export default function VerfolgenPage() {
     }
     if (pts.length === 1) m.setView(pts[0], 15);
     else if (pts.length === 2) m.fitBounds(pts, { padding: [60, 60], maxZoom: 16 });
-  }, [driverLoc, custLoc]);
+  }, [driverLoc, custLoc, mapReady]);
 
   return (
     <main className="page" style={{ maxWidth: 640 }}>

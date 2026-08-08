@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { ok, fail, readJson } from "@/lib/api";
+import { ok, fail, forbidden, readJson } from "@/lib/api";
 import type { UserRole } from "@/types/supabase";
 
 export const dynamic = "force-dynamic";
@@ -10,6 +10,7 @@ type Body = {
   role?: UserRole;
   full_name?: string;
   phone?: string;
+  driver_code?: string;
 };
 
 // POST /api/auth/register – Registrierung als Kunde ODER Fahrer.
@@ -23,6 +24,15 @@ export async function POST(req: Request) {
 
   if (!email || !password) return fail("E-Mail und Passwort sind erforderlich");
   if (password.length < 6) return fail("Passwort muss mind. 6 Zeichen haben");
+
+  // Fahrer-Registrierung ist geschützt: nur mit korrektem Fahrer-Code.
+  // Der Code liegt serverseitig (DRIVER_SIGNUP_CODE), nie im Browser.
+  if (role === "driver") {
+    const expected = process.env.DRIVER_SIGNUP_CODE;
+    if (!expected) return forbidden("Fahrer-Registrierung ist deaktiviert.");
+    if ((body.driver_code ?? "") !== expected)
+      return forbidden("Ungültiger Fahrer-Code.");
+  }
 
   const supabase = createClient();
   const { data, error } = await supabase.auth.signUp({

@@ -8,6 +8,7 @@ export default function FahrerLoginPage() {
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
+  const [driverCode, setDriverCode] = useState("");
   const [err, setErr] = useState("");
   const [info, setInfo] = useState("");
   const [busy, setBusy] = useState(false);
@@ -41,6 +42,7 @@ export default function FahrerLoginPage() {
             role: "driver",
             full_name: fullName,
             phone,
+            driver_code: driverCode,
           }),
         });
         const d = await r.json();
@@ -115,6 +117,15 @@ export default function FahrerLoginPage() {
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="0170 …"
                 inputMode="tel"
+              />
+            </div>
+            <div className="field">
+              <label>Fahrer-Code</label>
+              <input
+                value={driverCode}
+                onChange={(e) => setDriverCode(e.target.value)}
+                placeholder="Code von der Zentrale"
+                autoComplete="off"
               />
             </div>
           </>

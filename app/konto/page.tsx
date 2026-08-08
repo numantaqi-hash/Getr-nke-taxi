@@ -188,6 +188,11 @@ export default function KontoPage() {
                   </span>
                   <b style={{ color: "var(--gold)" }}>{eur(o.total)}</b>
                 </div>
+                {o.status !== "delivered" && o.status !== "cancelled" && (
+                  <a className="btn btn-primary btn-sm" href="/verfolgen" style={{ marginTop: 10 }}>
+                    📍 Live verfolgen
+                  </a>
+                )}
               </div>
             ))}
           </div>

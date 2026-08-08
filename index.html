@@ -781,6 +781,7 @@ document.getElementById("checkout").onclick=async()=>{
     const nr=data.order&&data.order.order_number;
     cart.clear();render();updateCart();closeCart();
     toast(nr?("Bestellung #"+nr+" aufgegeben! 🚕"):"Bestellung aufgegeben! 🚕");
+    setTimeout(()=>{location.href="/verfolgen";},1400);
   }catch(err){
     // Standalone/Datei-Modus: kein Backend erreichbar -> Demo
     closeCart();toast("Demo: Bestellung würde jetzt gesendet. 🚕");

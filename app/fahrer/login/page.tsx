@@ -3,28 +3,55 @@
 import { useState } from "react";
 
 export default function FahrerLoginPage() {
+  const [mode, setMode] = useState<"login" | "register">("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [phone, setPhone] = useState("");
   const [err, setErr] = useState("");
+  const [info, setInfo] = useState("");
   const [busy, setBusy] = useState(false);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     setErr("");
+    setInfo("");
     setBusy(true);
     try {
-      const r = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-      const d = await r.json();
-      if (!r.ok) throw new Error(d.error || "Login fehlgeschlagen");
-      if (d.role !== "driver") {
-        await fetch("/api/auth/logout", { method: "POST" });
-        throw new Error("Dies ist kein Fahrer-Konto.");
+      if (mode === "login") {
+        const r = await fetch("/api/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        });
+        const d = await r.json();
+        if (!r.ok) throw new Error(d.error || "Login fehlgeschlagen");
+        if (d.role !== "driver") {
+          await fetch("/api/auth/logout", { method: "POST" });
+          throw new Error("Dies ist kein Fahrer-Konto.");
+        }
+        window.location.href = "/fahrer";
+      } else {
+        const r = await fetch("/api/auth/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email,
+            password,
+            role: "driver",
+            full_name: fullName,
+            phone,
+          }),
+        });
+        const d = await r.json();
+        if (!r.ok) throw new Error(d.error || "Registrierung fehlgeschlagen");
+        if (d.needsEmailConfirmation) {
+          setInfo("Fast fertig! Bestätige deine E-Mail und melde dich dann an.");
+          setMode("login");
+        } else {
+          window.location.href = "/fahrer";
+        }
       }
-      window.location.href = "/fahrer";
     } catch (e) {
       setErr((e as Error).message);
     } finally {
@@ -47,12 +74,51 @@ export default function FahrerLoginPage() {
         </a>
       </div>
 
-      <h1 className="title">Fahrer-Login</h1>
-      <p className="sub">Melde dich an, um Lieferungen zu übernehmen.</p>
+      <h1 className="title">Fahrer-Zugang</h1>
+      <p className="sub">Melde dich an oder registriere dich als Fahrer.</p>
+
+      <div className="tabs">
+        <button
+          className={mode === "login" ? "active" : ""}
+          onClick={() => setMode("login")}
+          type="button"
+        >
+          Anmelden
+        </button>
+        <button
+          className={mode === "register" ? "active" : ""}
+          onClick={() => setMode("register")}
+          type="button"
+        >
+          Registrieren
+        </button>
+      </div>
 
       {err && <div className="alert error">{err}</div>}
+      {info && <div className="alert info">{info}</div>}
 
       <form className="panel" onSubmit={submit}>
+        {mode === "register" && (
+          <>
+            <div className="field">
+              <label>Name</label>
+              <input
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                placeholder="Vor- und Nachname"
+              />
+            </div>
+            <div className="field">
+              <label>Telefon</label>
+              <input
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="0170 …"
+                inputMode="tel"
+              />
+            </div>
+          </>
+        )}
         <div className="field">
           <label>E-Mail</label>
           <input
@@ -71,16 +137,20 @@ export default function FahrerLoginPage() {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            autoComplete="current-password"
+            placeholder="mind. 6 Zeichen"
+            autoComplete={mode === "login" ? "current-password" : "new-password"}
           />
         </div>
         <button className="btn btn-primary" disabled={busy} type="submit">
-          {busy ? "Bitte warten …" : "Anmelden"}
+          {busy ? "Bitte warten …" : mode === "login" ? "Anmelden" : "Als Fahrer registrieren"}
         </button>
       </form>
 
       <p className="center-note">
-        Fahrer-Konten werden über die Zentrale angelegt (Rolle „driver").
+        Kunde?{" "}
+        <a className="link" href="/login">
+          Zum Kunden-Login
+        </a>
       </p>
     </main>
   );

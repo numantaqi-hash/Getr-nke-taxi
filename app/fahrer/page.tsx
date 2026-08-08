@@ -26,6 +26,7 @@ export default function FahrerDashboard() {
   const [loading, setLoading] = useState(true);
   const [driver, setDriver] = useState<Driver | null>(null);
   const [deliveries, setDeliveries] = useState<OrderWithItems[]>([]);
+  const [available, setAvailable] = useState<OrderWithItems[]>([]);
   const [coords, setCoords] = useState<{ lat: number; lng: number } | null>(null);
   const [gpsMsg, setGpsMsg] = useState("");
   const [err, setErr] = useState("");
@@ -36,6 +37,26 @@ export default function FahrerDashboard() {
     const r = await fetch("/api/driver/deliveries");
     if (r.ok) setDeliveries((await r.json()).deliveries ?? []);
   }, []);
+
+  const loadAvailable = useCallback(async () => {
+    const r = await fetch("/api/driver/available");
+    if (r.ok) setAvailable((await r.json()).available ?? []);
+  }, []);
+
+  async function accept(order_id: string) {
+    setErr("");
+    const r = await fetch("/api/driver/available", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ order_id }),
+    });
+    if (r.ok) {
+      await Promise.all([loadAvailable(), loadDeliveries()]);
+    } else {
+      setErr((await r.json()).error || "Annehmen fehlgeschlagen");
+      loadAvailable();
+    }
+  }
 
   useEffect(() => {
     (async () => {
@@ -51,16 +72,19 @@ export default function FahrerDashboard() {
       }
       const s = await fetch("/api/driver/status");
       if (s.ok) setDriver((await s.json()).driver ?? null);
-      await loadDeliveries();
+      await Promise.all([loadDeliveries(), loadAvailable()]);
       setLoading(false);
     })().catch(() => setLoading(false));
-  }, [loadDeliveries]);
+  }, [loadDeliveries, loadAvailable]);
 
-  // Lieferungen alle 15 s aktualisieren
+  // Aufträge alle 15 s aktualisieren
   useEffect(() => {
-    const id = window.setInterval(loadDeliveries, 15000);
+    const id = window.setInterval(() => {
+      loadDeliveries();
+      loadAvailable();
+    }, 15000);
     return () => window.clearInterval(id);
-  }, [loadDeliveries]);
+  }, [loadDeliveries, loadAvailable]);
 
   async function setStatus(status: DriverStatus) {
     setErr("");
@@ -201,6 +225,32 @@ export default function FahrerDashboard() {
           </p>
         )}
         {gpsMsg && <p className="muted">{gpsMsg}</p>}
+      </div>
+
+      <div className="panel">
+        <div className="between" style={{ marginBottom: 6 }}>
+          <b>Verfügbare Aufträge</b>
+          <span className="pill busy"><span className="dot" />{available.length}</span>
+        </div>
+        {available.length === 0 ? (
+          <p className="empty">Zurzeit keine offenen Aufträge.</p>
+        ) : (
+          available.map((o) => (
+            <div className="delivery" key={o.id}>
+              <div className="between">
+                <h4>Bestellung #{o.order_number}</h4>
+                <b style={{ color: "var(--gold)" }}>{eur(o.total)}</b>
+              </div>
+              <div className="muted">{o.address ?? "Adresse folgt"}</div>
+              <div className="between" style={{ margin: "8px 0 10px" }}>
+                <span className="muted">{o.order_items.length} Artikel · {o.delivery_zone}</span>
+              </div>
+              <button className="btn btn-primary btn-sm" onClick={() => accept(o.id)}>
+                Auftrag annehmen
+              </button>
+            </div>
+          ))
+        )}
       </div>
 
       <div className="panel">
